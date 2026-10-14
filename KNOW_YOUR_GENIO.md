@@ -6,13 +6,23 @@ A calm, living companion living in your macOS menu bar. Type a wish, and a livin
 
 ---
 
-## ⚡ 1-Click Awakening (Terminal)
+## ⚡ Quick Setup & Updates (Terminal)
 
+### ✦ First-Time Awakening
 Open **Terminal** (`Cmd + Space` &rarr; `Terminal`) and paste:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash
 ```
+
+### ↻ Refresh to Latest Release
+To update an existing installation to the newest release build:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash
+```
+
+> **Zero-Paste Alternative:** Double-click `Awaken.command` or `Update.command` directly inside the DMG package to run automatically in Terminal!
 
 **What this does automatically:**
 1. ✦ Cleans any previous running build

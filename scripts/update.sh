@@ -1,30 +1,61 @@
-#!/usr/bin/env bash
-set -euo pipefail
+set -e
 
-echo "==> Fetching latest Genio release..."
-DMG_URL="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg"
+cleanup() {
+  if [ -n "${MOUNT_DIR:-}" ] && [ -d "${MOUNT_DIR}" ]; then
+    hdiutil detach "${MOUNT_DIR}" -quiet 2>/dev/null || true
+  fi
+  if [ -n "${TEMP_DIR:-}" ] && [ -d "${TEMP_DIR}" ]; then
+    rm -rf "${TEMP_DIR}" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT INT TERM
+
+printf "  \033[1;38;5;220m✦\033[0m   Refreshing Genio to latest release...\n"
+
+RELEASE_URL="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg"
 TEMP_DIR="$(mktemp -d)"
 DMG_PATH="${TEMP_DIR}/Genio.dmg"
+MOUNT_DIR="${TEMP_DIR}/mount"
 
-curl -fsSL -o "${DMG_PATH}" "${DMG_URL}"
+if ! curl -f -L -s -S -o "${DMG_PATH}" "${RELEASE_URL}"; then
+  printf "\n  \033[1;31m✖ Error:\033[0m Could not locate or download Genio update package.\n"
+  printf "    Target URL: %s\n" "${RELEASE_URL}"
+  printf "    The release location may have moved, or your Mac may be offline.\n"
+  printf "    Please verify at: https://github.com/abhi32dev/Genio-Releases\n\n"
+  exit 1
+fi
 
-echo "==> Mounting Genio installer..."
-MOUNT_DIR="$(mktemp -d)"
-hdiutil attach "${DMG_PATH}" -mountpoint "${MOUNT_DIR}" -nobrowse -quiet
+if [ ! -s "${DMG_PATH}" ]; then
+  printf "\n  \033[1;31m✖ Error:\033[0m Downloaded update package is empty or corrupted.\n\n"
+  exit 1
+fi
 
-echo "==> Stopping any running instances of Genio..."
-killall Genio 2>/dev/null || true
+mkdir -p "${MOUNT_DIR}"
+if ! hdiutil attach "${DMG_PATH}" -mountpoint "${MOUNT_DIR}" -nobrowse -quiet; then
+  printf "\n  \033[1;31m✖ Error:\033[0m Failed to mount Genio.dmg image.\n\n"
+  exit 1
+fi
+
+# Stop any running instances
+killall "Genio" 2>/dev/null || killall "My Genie" 2>/dev/null || true
 sleep 1
 
-echo "==> Updating /Applications/Genio.app..."
+# Replace /Applications/Genio.app
 rm -rf "/Applications/Genio.app"
-cp -R "${MOUNT_DIR}/Genio.app" "/Applications/Genio.app"
-xattr -cr "/Applications/Genio.app" 2>/dev/null || true
+if [ -d "${MOUNT_DIR}/Genio.app" ]; then
+  cp -R "${MOUNT_DIR}/Genio.app" "/Applications/Genio.app"
+elif compgen -G "${MOUNT_DIR}/*.app" > /dev/null; then
+  cp -R "${MOUNT_DIR}/"*.app "/Applications/Genio.app"
+else
+  printf "\n  \033[1;31m✖ Error:\033[0m Genio.app bundle not found inside mounted image.\n\n"
+  exit 1
+fi
 
-echo "==> Detaching installer..."
-hdiutil detach "${MOUNT_DIR}" -quiet || true
+xattr -cr "/Applications/Genio.app" 2>/dev/null || true
+hdiutil detach "${MOUNT_DIR}" -quiet 2>/dev/null || true
 rm -rf "${TEMP_DIR}"
 
-echo "==> Launching Genio..."
-open "/Applications/Genio.app"
-echo "==> Genio updated and launched successfully!"
+printf "  \033[1;38;5;45m◆\033[0m   Updated /Applications/Genio.app successfully\n"
+
+open "/Applications/Genio.app" 2>/dev/null || true
+printf "  \033[1;38;5;48m✧\033[0m   \033[1;38;5;48m\033[1mTada! Ready.\033[0m Genio refreshed in your menu bar.\n"

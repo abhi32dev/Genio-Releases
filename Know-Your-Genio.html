@@ -182,55 +182,98 @@
       line-height: 1.35;
     }
 
-    /* Awakening Action Button & Pill */
-    .hero-action-card {
+    /* Awakening & Refresh Action Card */
+    .action-card {
       background: linear-gradient(180deg, #fffcf5 0%, #faf6eb 100%);
-      border: 1.5px solid #dfcf9e;
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 14px rgba(140, 109, 31, 0.08);
-      text-align: center;
+      border: 1px solid #ebdcb9;
+      border-radius: 11px;
+      padding: 13px 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(140, 109, 31, 0.04);
     }
 
-    .copy-pill-button {
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .action-meta {
+      flex: 1;
+      text-align: left;
+    }
+
+    .action-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1c1c1e;
+      margin-bottom: 2px;
+      letter-spacing: -0.2px;
+    }
+
+    .action-desc {
+      font-size: 11px;
+      color: #636366;
+      line-height: 1.35;
+    }
+
+    .action-row-divider {
+      height: 1px;
+      background: #ebdcb9;
+      margin: 10px 0;
+    }
+
+    .action-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: #1c1c1e;
-      color: #f5f5f7;
-      font-size: 12.5px;
+      gap: 6px;
+      border: none;
+      outline: none;
+      border-radius: 9999px;
+      padding: 7px 16px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 10px 22px;
-      border-radius: 30px;
-      text-decoration: none;
+      letter-spacing: -0.1px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      border: 1px solid #3a3a3c;
-      transition: all 0.2s ease;
-      margin-bottom: 12px;
+      white-space: nowrap;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.18s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      user-select: none;
     }
 
-    .copy-pill-button:hover {
+    .action-btn-gold {
+      background: #1c1c1e;
+      color: #ffd866;
+    }
+
+    .action-btn-dark {
+      background: #2c2c2e;
+      color: #f5f5f7;
+    }
+
+    .action-btn:hover {
       background: #000000;
       color: #ffffff;
       transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
     }
 
-    .code-pill {
-      background: #18181a;
-      color: #ffd866;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 9.8px;
-      letter-spacing: -0.2px;
-      white-space: nowrap;
-      border: 1px solid #2c2c2e;
-      margin: 0 auto;
-      max-width: 580px;
-      user-select: all;
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    .action-btn.copied {
+      background: #1b5e20 !important;
+      color: #ffffff !important;
+    }
+
+    .action-btn .btn-icon {
+      font-size: 11px;
     }
 
     .steps-row {
@@ -475,34 +518,51 @@
         Zero manual setup required. Simply copy the awakening command, paste into Terminal, and let Genio prepare itself.
       </p>
 
-      <!-- HERO 1-CLICK COPY CARD -->
-      <div class="hero-action-card">
-        <a href="https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh" class="copy-pill-button" id="copyBtn" onclick="copyCommand(event)">
-          <span>&#10022;</span>
-          <span>Click to Copy Awakening Command</span>
-        </a>
-
-        <div class="code-pill">
-          curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash
+      <!-- COMMAND RUNNERS CARD (No Raw URLs, Compact Buttons Right, Text Left) -->
+      <div class="action-card">
+        <!-- Row 1: Initial Setup / Awakening -->
+        <div class="action-row">
+          <div class="action-meta">
+            <div class="action-title">First-Time Setup</div>
+            <div class="action-desc">Cleanly installs fresh Genio build and configures environment</div>
+          </div>
+          <button type="button" class="action-btn action-btn-gold" onclick="copySetup(this)" title="Copy Setup Command">
+            <span class="btn-icon">✦</span>
+            <span class="btn-label">Copy Setup</span>
+          </button>
         </div>
 
-        <!-- 3 Quick Steps -->
-        <div class="steps-row">
-          <div class="step-card-mini">
-            <span class="step-num-pill">1</span>
-            <div class="step-card-title">Copy Command</div>
-            <div class="step-card-desc">Click the button above or copy the clean 1-line script.</div>
+        <div class="action-row-divider"></div>
+
+        <!-- Row 2: Refresh / Update -->
+        <div class="action-row">
+          <div class="action-meta">
+            <div class="action-title">Refresh &amp; Update</div>
+            <div class="action-desc">Pulls the latest release in place without losing your custom wishes</div>
           </div>
-          <div class="step-card-mini">
-            <span class="step-num-pill">2</span>
-            <div class="step-card-title">Open Terminal</div>
-            <div class="step-card-desc">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
-          </div>
-          <div class="step-card-mini">
-            <span class="step-num-pill">3</span>
-            <div class="step-card-title">Paste &amp; Awaken</div>
-            <div class="step-card-desc">Press <strong>Cmd + V</strong> and hit Return. Look for the lamp!</div>
-          </div>
+          <button type="button" class="action-btn action-btn-dark" onclick="copyUpdate(this)" title="Copy Update Command">
+            <span class="btn-icon">↻</span>
+            <span class="btn-label">Copy Update</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 Quick Steps -->
+      <div class="steps-row">
+        <div class="step-card-mini">
+          <span class="step-num-pill">1</span>
+          <div class="step-card-title">Copy Command</div>
+          <div class="step-card-desc">Click button above (or double-click <strong>Awaken.command</strong> in DMG).</div>
+        </div>
+        <div class="step-card-mini">
+          <span class="step-num-pill">2</span>
+          <div class="step-card-title">Open Terminal</div>
+          <div class="step-card-desc">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
+        </div>
+        <div class="step-card-mini">
+          <span class="step-num-pill">3</span>
+          <div class="step-card-title">Paste &amp; Awaken</div>
+          <div class="step-card-desc">Press <strong>Cmd + V</strong> and hit Return. Look for Genio in menu bar!</div>
         </div>
       </div>
 
@@ -555,7 +615,7 @@
     <div class="page-content">
       <div class="section-title">The Art of Wishing &amp; Canvas Freedom</div>
       <p class="prose-text" style="margin-bottom: 11px;">
-        Click the golden lamp in your menu bar, type into <strong>"Make a Wish..."</strong>, and watch your thoughts take living form:
+        Click Genio (<strong>✨</strong>) in your menu bar, type into <strong>"Make a Wish..."</strong>, and watch your thoughts take living form:
       </p>
 
       <!-- 3 Gestures & Controls -->
@@ -570,7 +630,7 @@
         </div>
         <div class="gesture-card">
           <div class="gesture-title">&#127919; 1-Click Reset</div>
-          <div class="gesture-desc">Click the snap icon to instantly return directly beneath your tray lamp.</div>
+          <div class="gesture-desc">Click the snap icon to instantly return directly beneath your menu bar icon.</div>
         </div>
       </div>
 
@@ -624,22 +684,30 @@
   </div>
 
   <script>
-    function copyCommand(e) {
-      const cmd = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
+    const SETUP_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
+    const UPDATE_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash";
+
+    function copySetup(btn) {
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(cmd);
-        const btn = document.getElementById("copyBtn");
-        if (btn) {
-          btn.innerHTML = "<span>&#10004;</span> <span>Copied to Clipboard!</span>";
-          btn.style.background = "#2e7d32";
-          btn.style.borderColor = "#2e7d32";
-          setTimeout(() => {
-            btn.innerHTML = "<span>&#10022;</span> <span>Click to Copy Awakening Command</span>";
-            btn.style.background = "#1c1c1e";
-            btn.style.borderColor = "#3a3a3c";
-          }, 2500);
-        }
+        navigator.clipboard.writeText(SETUP_CMD);
       }
+      flashCopied(btn, "✦", "Copy Setup");
+    }
+
+    function copyUpdate(btn) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(UPDATE_CMD);
+      }
+      flashCopied(btn, "↻", "Copy Update");
+    }
+
+    function flashCopied(btn, originalIcon, originalLabel) {
+      btn.classList.add("copied");
+      btn.innerHTML = '<span>✓</span> <span>Copied!</span>';
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = `<span class="btn-icon">${originalIcon}</span> <span class="btn-label">${originalLabel}</span>`;
+      }, 2200);
     }
   </script>
 
