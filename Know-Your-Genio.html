@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Know-Your-Genio • A Living Companion Guide</title>
+  <title>Know Your Genio • A Living Companion Guide</title>
   <style>
     @page {
       size: letter portrait;
@@ -20,7 +20,7 @@
       color: #1c1c1e;
       background-color: #ffffff;
       line-height: 1.5;
-      font-size: 12.5px;
+      font-size: 12px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -51,7 +51,7 @@
     /* Top Celestial Brand Header */
     .hero-header {
       text-align: center;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .starlight-sparkles {
@@ -62,10 +62,10 @@
     }
 
     .lamp-container {
-      width: 125px;
-      height: 125px;
+      width: 120px;
+      height: 120px;
       margin: 0 auto 10px auto;
-      filter: drop-shadow(0 12px 24px rgba(212, 175, 55, 0.35));
+      filter: drop-shadow(0 10px 22px rgba(212, 175, 55, 0.35));
     }
 
     .lamp-container svg {
@@ -83,7 +83,7 @@
     }
 
     .brand-subtitle {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 500;
       color: #8c6d1f;
       letter-spacing: 0.3px;
@@ -96,37 +96,35 @@
       border-radius: 11px;
       padding: 12px 20px;
       margin: 0 auto 16px auto;
-      max-width: 550px;
+      max-width: 540px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(197, 155, 39, 0.05);
     }
 
     .quote-card p {
-      font-style: italic;
-      color: #725816;
       font-size: 13px;
+      font-style: italic;
+      color: #5c4d28;
       line-height: 1.45;
     }
 
     .section-title {
-      font-size: 17px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      font-size: 20px;
       font-weight: 700;
       color: #1c1c1e;
       letter-spacing: -0.3px;
-      margin-bottom: 11px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid #f0ece3;
+      margin-bottom: 8px;
     }
 
     .prose-text {
-      color: #3a3a3c;
-      line-height: 1.55;
-      margin-bottom: 11px;
-      font-size: 12.5px;
+      font-size: 12px;
+      color: #48484a;
+      line-height: 1.5;
+      margin-bottom: 8px;
     }
 
     .card {
-      background: #fbfaf8;
+      background: #ffffff;
       border: 1px solid #eae5db;
       border-radius: 10px;
       padding: 13px 16px;
@@ -136,193 +134,26 @@
 
     .card-title {
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: #8c6d1f;
-      margin-bottom: 6px;
-    }
-
-    /* Page 2 Balanced Parallel Hierarchy */
-    .way-card {
-      background: #fbfaf8;
-      border: 1px solid #eae5db;
-      border-radius: 11px;
-      padding: 13px 16px;
-      margin-bottom: 12px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .way-card.way1 {
-      background: linear-gradient(180deg, #fffcf5 0%, #faf6eb 100%);
-      border: 1.5px solid #dfcf9e;
-      box-shadow: 0 2px 6px rgba(140, 109, 31, 0.05);
-    }
-
-    .way-header {
-      display: flex;
-      align-items: center;
-      gap: 9px;
       margin-bottom: 5px;
-    }
-
-    .way-badge {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: #ede6d8;
-      color: #725816;
-    }
-
-    .way-card.way1 .way-badge {
-      background: #8c6d1f;
-      color: #ffffff;
-    }
-
-    .way-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1c1c1e;
-      letter-spacing: -0.2px;
-    }
-
-    .way-desc {
-      font-size: 11.5px;
-      color: #5c5c60;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .way-action {
-      margin-top: 3px;
-    }
-
-    .way-button {
-      background: #8c6d1f;
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      letter-spacing: 0.2px;
-      display: inline-block;
-      transition: background 0.15s ease;
-    }
-
-    .way-button:hover {
-      background: #735917;
-    }
-
-    .manual-steps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .manual-step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      background: #ffffff;
-      border: 1px solid #ede8de;
-      border-radius: 7px;
-      padding: 8px 11px;
-    }
-
-    .step-num {
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      background: #f0ebe1;
-      color: #8c6d1f;
-      font-size: 10.5px;
-      font-weight: 700;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .step-body {
-      font-size: 11px;
-      color: #3a3a3c;
-      line-height: 1.4;
-      flex: 1;
-    }
-
-    .ai-options-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .ai-option-card {
-      background: #fcfbf9;
-      border: 1px solid #ebdcb9;
-      border-radius: 6px;
-      padding: 7px 9px;
-    }
-
-    .ai-option-title {
-      font-size: 11px;
-      font-weight: 700;
-      color: #8c6d1f;
-      margin-bottom: 4px;
-    }
-
-    .ai-option-label {
-      font-size: 10px;
-      color: #636366;
-      margin-bottom: 2px;
-    }
-
-    .code-box-mini {
-      background: #18181a;
-      color: #f5f5f7;
-      padding: 5px 8px;
-      border-radius: 5px;
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 10px;
-      line-height: 1.35;
-      margin-bottom: 4px;
-      word-break: break-all;
-      border: 1px solid #2c2c2e;
-    }
-
-    .code-box-mini:last-child {
-      margin-bottom: 0;
-    }
-
-    .code-box {
-      background: #18181a;
-      color: #f5f5f7;
-      padding: 9px 12px;
-      border-radius: 6px;
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 11px;
-      line-height: 1.45;
-      margin: 6px 0;
-      user-select: all;
-      word-break: break-all;
-      border: 1px solid #2c2c2e;
+      gap: 6px;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 11px;
+      gap: 11px;
+      margin-bottom: 10px;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 11px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .pillar-card {
@@ -351,26 +182,151 @@
       line-height: 1.35;
     }
 
+    /* Awakening Action Button & Pill */
+    .hero-action-card {
+      background: linear-gradient(180deg, #fffcf5 0%, #faf6eb 100%);
+      border: 1.5px solid #dfcf9e;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(140, 109, 31, 0.08);
+      text-align: center;
+    }
+
+    .copy-pill-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #1c1c1e;
+      color: #f5f5f7;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid #3a3a3c;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+
+    .copy-pill-button:hover {
+      background: #000000;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .code-pill {
+      background: #18181a;
+      color: #ffd866;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 9.8px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+      border: 1px solid #2c2c2e;
+      margin: 0 auto;
+      max-width: 580px;
+      user-select: all;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+      text-align: left;
+    }
+
+    .step-card-mini {
+      background: #ffffff;
+      border: 1px solid #ede8de;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .step-num-pill {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #8c6d1f;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 18px;
+      margin-bottom: 4px;
+    }
+
+    .step-card-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #1c1c1e;
+      margin-bottom: 2px;
+    }
+
+    .step-card-desc {
+      font-size: 10.5px;
+      color: #636366;
+      line-height: 1.35;
+    }
+
+    .flow-preview {
+      background: #ffffff;
+      border: 1px solid #ede8de;
+      border-radius: 9px;
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+
+    .flow-step-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size: 10.5px;
+      color: #3a3a3c;
+      margin-bottom: 4px;
+    }
+
+    .flow-step-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .flow-icon {
+      font-size: 11px;
+      width: 16px;
+      text-align: center;
+    }
+
     .wish-card {
       background: #ffffff;
       border: 1px solid #eae5db;
       border-radius: 9px;
-      padding: 12px 14px;
+      padding: 11px 13px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
     }
 
     .wish-header {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: #8c6d1f;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .wish-item {
-      font-size: 11.5px;
+      font-size: 11px;
       color: #48484a;
-      line-height: 1.4;
+      line-height: 1.38;
       margin-bottom: 4px;
+    }
+
+    .wish-item:last-child {
+      margin-bottom: 0;
     }
 
     .wish-quote {
@@ -378,10 +334,38 @@
       color: #725816;
     }
 
+    .gesture-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .gesture-card {
+      background: #faf9f6;
+      border: 1px solid #e5ded2;
+      border-radius: 8px;
+      padding: 10px 11px;
+      text-align: center;
+    }
+
+    .gesture-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #8c6d1f;
+      margin-bottom: 3px;
+    }
+
+    .gesture-desc {
+      font-size: 10.5px;
+      color: #5c5c60;
+      line-height: 1.35;
+    }
+
     .footer-seal {
       text-align: center;
-      padding-top: 10px;
-      font-size: 10.5px;
+      padding-top: 9px;
+      font-size: 10px;
       color: #8a8a8e;
       letter-spacing: 0.5px;
       border-top: 1px solid #f2eee6;
@@ -477,164 +461,120 @@
     </div>
 
     <div class="footer-seal">
-      Genio &bull; Designed with care for macOS
+      Page 1 of 3 &bull; Genio Sanctuary &bull; Designed with care for macOS
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- PAGE 2: Two Ways to Awaken Genio           -->
+  <!-- PAGE 2: Instant Awakening (No Clutter)     -->
   <!-- ========================================== -->
   <div class="page" id="page-2">
     <div class="page-content">
-      <div class="section-title">Two Ways to Awaken Genio</div>
+      <div class="section-title">Instant Awakening</div>
       <p class="prose-text" style="margin-bottom: 12px; font-size: 12px; color: #636366;">
-        Choose between the fast one-step automated awakening or manual step-by-step configuration:
+        Zero manual setup required. Simply copy the awakening command, paste into Terminal, and let Genio prepare itself.
       </p>
 
-      <!-- OPTION A: Way 1 Card -->
-      <div class="way-card way1">
-        <div class="way-header">
-          <span class="way-badge">Option A</span>
-          <span class="way-title">Way 1: Automated Setup (Recommended)</span>
+      <!-- HERO 1-CLICK COPY CARD -->
+      <div class="hero-action-card">
+        <a href="https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh" class="copy-pill-button" id="copyBtn" onclick="copyCommand(event)">
+          <span>&#10022;</span>
+          <span>Click to Copy Awakening Command</span>
+        </a>
+
+        <div class="code-pill">
+          curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash
         </div>
-        <p class="way-desc">
-          Awaken Genio in seconds with a single automated Terminal command. Your Mac prepares your environment, links your AI companion, and launches Genio automatically.
-        </p>
-        <div class="way-action">
-          <a href="#page-3" class="way-button">Direct 1-Click Solution: Go to Page 3 &rarr;</a>
+
+        <!-- 3 Quick Steps -->
+        <div class="steps-row">
+          <div class="step-card-mini">
+            <span class="step-num-pill">1</span>
+            <div class="step-card-title">Copy Command</div>
+            <div class="step-card-desc">Click the button above or copy the clean 1-line script.</div>
+          </div>
+          <div class="step-card-mini">
+            <span class="step-num-pill">2</span>
+            <div class="step-card-title">Open Terminal</div>
+            <div class="step-card-desc">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
+          </div>
+          <div class="step-card-mini">
+            <span class="step-num-pill">3</span>
+            <div class="step-card-title">Paste &amp; Awaken</div>
+            <div class="step-card-desc">Press <strong>Cmd + V</strong> and hit Return. Look for the lamp!</div>
+          </div>
         </div>
       </div>
 
-      <!-- OPTION B: Way 2 Card -->
-      <div class="way-card way2">
-        <div class="way-header">
-          <span class="way-badge">Option B</span>
-          <span class="way-title">Way 2: Manual Configuration</span>
+      <!-- Live Experience Progression Preview -->
+      <div class="flow-preview">
+        <div style="font-size: 11px; font-weight: 700; color: #8c6d1f; margin-bottom: 8px;">
+          What Happens Automatically in Terminal:
         </div>
-        <p class="way-desc">
-          If you prefer to configure components manually step by step:
+        <div class="flow-step-line">
+          <span class="flow-icon" style="color: #c59b27;">&#10022;</span>
+          <span>Awakening Genio...</span>
+        </div>
+        <div class="flow-step-line">
+          <span class="flow-icon" style="color: #29b6f6;">&#9670;</span>
+          <span>Installing fresh build into Applications</span>
+        </div>
+        <div class="flow-step-line">
+          <span class="flow-icon" style="color: #ab47bc;">&#9672;</span>
+          <span>Configuring environment &amp; PATH</span>
+        </div>
+        <div class="flow-step-line">
+          <span class="flow-icon" style="color: #ff7043;">&#10070;</span>
+          <span>Connecting AI companion</span>
+        </div>
+        <div class="flow-step-line">
+          <span class="flow-icon" style="color: #2e7d32; font-weight: bold;">&#10023;</span>
+          <span style="color: #2e7d32; font-weight: 700;">Tada! Ready.</span>
+          <span>Look for Genio in your menu bar.</span>
+        </div>
+      </div>
+
+      <!-- Direct Downloads Card -->
+      <div class="card" style="margin-top: 12px; margin-bottom: 0;">
+        <div class="card-title">&#128230; Direct Download &amp; Offline Release</div>
+        <p class="prose-text" style="font-size: 11px; color: #5c5c60; margin-bottom: 0;">
+          Prefer manual installation? Download the universal DMG: <a href="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg" style="color: #8c6d1f; font-weight: 600; text-decoration: underline;">Genio.dmg</a> &bull; Release page: <a href="https://github.com/abhi32dev/Genio-Releases/releases/tag/macOS/v0.1.0" style="color: #8c6d1f; text-decoration: underline;">GitHub Releases</a>
         </p>
-
-        <div class="manual-steps-list">
-          <!-- Step 1 -->
-          <div class="manual-step-item">
-            <div class="step-num">1</div>
-            <div class="step-body">
-              Drag <strong>Genio</strong> from the <strong>Installer</strong> into your <strong>Applications folder</strong>, then double-click to open.
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="manual-step-item">
-            <div class="step-num">2</div>
-            <div class="step-body">
-              macOS confirms independent apps once. Click <strong>Done</strong> on the alert, then open <strong>System Settings &gt; Privacy &amp; Security &gt; Security</strong>, locate <strong>Genio.app</strong>, and click <strong>Open Anyway</strong>.
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="manual-step-item" style="flex-direction: column;">
-            <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
-              <div class="step-num">3</div>
-              <div class="step-body" style="font-weight: 600; color: #1c1c1e;">
-                Connect AI:
-              </div>
-            </div>
-            <div class="ai-options-grid" style="width: 100%; margin-top: 5px;">
-              <!-- Claude -->
-              <div class="ai-option-card">
-                <div class="ai-option-title">Claude (Recommended)</div>
-                <div class="ai-option-label">Run in <strong>Terminal</strong>:</div>
-                <div class="code-box-mini">npm install -g @anthropic-ai/claude-code</div>
-                <div class="ai-option-label">Then run below to sign in once:</div>
-                <div class="code-box-mini">claude</div>
-              </div>
-
-              <!-- Codex -->
-              <div class="ai-option-card">
-                <div class="ai-option-title">Codex by OpenAI</div>
-                <div class="ai-option-label">Run in <strong>Terminal</strong>:</div>
-                <div class="code-box-mini">npm install -g @openai/codex</div>
-                <div class="ai-option-label">Then run below to sign in once:</div>
-                <div class="code-box-mini">codex login</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
     <div class="footer-seal">
-      Step 1 &bull; Step 2 &bull; Step 3 &bull; Done!
+      Page 2 of 3 &bull; Instant Awakening &bull; 1-Click Operation
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- PAGE 3: The Universal Awakening            -->
+  <!-- PAGE 3: The Art of Wishing & Native Canvas -->
   <!-- ========================================== -->
   <div class="page" id="page-3">
     <div class="page-content">
-      <div class="section-title">The Universal Awakening</div>
+      <div class="section-title">The Art of Wishing &amp; Canvas Freedom</div>
       <p class="prose-text" style="margin-bottom: 11px;">
-        The simplest way to awaken Genio on your Mac in a single step.
+        Click the golden lamp in your menu bar, type into <strong>"Make a Wish..."</strong>, and watch your thoughts take living form:
       </p>
 
-      <!-- One-Step Terminal Setup Card -->
-      <div class="card" style="padding: 14px 17px; margin-bottom: 11px;">
-        <div class="card-title">One-step setup for macOS</div>
-        <p class="prose-text" style="font-size: 12px; margin-bottom: 6px;">
-          Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and press <strong>Return</strong>. Paste below code block and press <strong>Return</strong>:
-        </p>
-        
-        <div class="code-box" style="font-size: 10px; padding: 9px 12px;">
-/bin/zsh -c 'echo "✦ Awakening Genio..."; xattr -cr "/Applications/Genio.app" 2>/dev/null; mkdir -p "$HOME/.local/bin"; export PATH="$HOME/.local/bin:$PATH"; grep -q ".local/bin" "$HOME/.zshrc" 2>/dev/null || echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> "$HOME/.zshrc"; command -v node >/dev/null 2>&1 || (command -v brew >/dev/null 2>&1 && brew install node || (curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install --lts)) >/dev/null 2>&1; echo "✓ Preparing environment"; (command -v claude || command -v codex || npm i -g --prefix "$HOME/.local" @anthropic-ai/claude-code) >/dev/null 2>&1; command -v claude >/dev/null 2>&1 && (claude --version >/dev/null 2>&1 || claude) || (codex --version >/dev/null 2>&1 || codex login); echo "✓ Connecting AI companion"; open "/Applications/Genio.app" 2>/dev/null || true; echo "✓ Ready! Look for the lamp in your menu bar."'
+      <!-- 3 Gestures & Controls -->
+      <div class="gesture-row">
+        <div class="gesture-card">
+          <div class="gesture-title">&#128204; Always on Top</div>
+          <div class="gesture-desc">Floats over all fullscreen apps and spaces without switching desktops.</div>
         </div>
-
-        <p class="prose-text" style="font-size: 11.5px; color: #5c4d28; margin-top: 6px; margin-bottom: 0;">
-          Your Mac will automatically prepare your environment, link your companion, and light the lamp in your menu bar.
-        </p>
-      </div>
-
-      <!-- Pure Canvas & Minimal Essentials Card -->
-      <div class="card" style="padding: 13px 17px; margin-bottom: 11px; background: #faf9f6; border: 1px solid #e5ded2;">
-        <div class="card-title">Pure canvas and minimal essentials</div>
-        <p class="prose-text" style="font-size: 11.5px; color: #3a3a3c; line-height: 1.5; margin-bottom: 0;">
-          Genio is deliberately kept light and spacious so you can shape, design, and personalize the canvas as you wish. It includes thoughtful essentials: <strong>pinned for always on top</strong> so you never lose focus, <strong>dynamic resizing</strong> to fit your screen rhythm, and <strong>10 soothing wallpapers</strong> to seamlessly match your mood.
-        </p>
-      </div>
-
-      <!-- Updates Card -->
-      <div class="card" style="padding: 13px 17px; margin-bottom: 0; background: #ffffff; border: 1px solid #eae5db;">
-        <div class="card-title">Updates</div>
-        <p class="prose-text" style="font-size: 11.5px; margin-bottom: 6px;">
-          A subtle pulse appears in the header when an update is available. To update while keeping your creations intact:
-        </p>
-        
-        <div class="code-box" style="font-size: 10.5px; padding: 7px 12px; margin-bottom: 6px;">
-curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash
+        <div class="gesture-card">
+          <div class="gesture-title">&#9995; Drag Anywhere</div>
+          <div class="gesture-desc">Drag the header (<strong style="color: #8c6d1f;">GENIO &#10024;</strong>) to reposition anywhere on display.</div>
         </div>
-        
-        <p class="prose-text" style="font-size: 11px; color: #636366; margin-bottom: 0;">
-          Download link: <a href="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg" style="color: #8c6d1f; text-decoration: underline;">Genio.dmg</a> &bull; Release page: <a href="https://github.com/abhi32dev/Genio-Releases/releases/tag/macOS/v0.1.0" style="color: #8c6d1f; text-decoration: underline;">Genio Releases</a>
-        </p>
+        <div class="gesture-card">
+          <div class="gesture-title">&#127919; 1-Click Reset</div>
+          <div class="gesture-desc">Click the snap icon to instantly return directly beneath your tray lamp.</div>
+        </div>
       </div>
-    </div>
 
-    <div class="footer-seal">
-      One line &bull; Zero configuration &bull; Instant awakening
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- PAGE 4: The Art of Wishing                 -->
-  <!-- ========================================== -->
-  <div class="page" id="page-4">
-    <div class="page-content">
-      <div class="section-title">The Art of Wishing</div>
-      <p class="prose-text" style="margin-bottom: 12px;">
-        Now click the golden lamp in your menu bar, type into <strong>"Make a Wish..."</strong>, and watch your thoughts take living form:
-      </p>
-
+      <!-- 4 Wish Categories Grid -->
       <div class="grid-2">
         <!-- Mindfulness -->
         <div class="wish-card">
@@ -665,23 +605,43 @@ curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scrip
         </div>
       </div>
 
-      <p class="prose-text" style="font-size: 12px; color: #636366; margin-bottom: 13px;">
+      <p class="prose-text" style="font-size: 11.5px; color: #636366; margin-bottom: 11px;">
         When your widget appears, click <strong>"Keep"</strong> to save it permanently, or type another wish to transform it anew.
       </p>
 
       <!-- Sanctuary & Sovereignty Card -->
-      <div class="card" style="padding: 13px 16px; margin-bottom: 0; background: #faf9f6; border: 1px solid #e5ded2;">
-        <div class="card-title">Your sanctuary is forever yours</div>
-        <p class="prose-text" style="margin-bottom: 0; font-size: 11.5px; color: #3a3a3c; line-height: 1.5;">
-          All your custom widgets, themes, and preferences live safely on your Mac in <code>~/.genio/</code>. Genio operates 100% on-device with complete privacy. Nothing is harvested, tracked, or sent to third parties.
+      <div class="card" style="padding: 12px 16px; margin-bottom: 0; background: #faf9f6; border: 1px solid #e5ded2;">
+        <div class="card-title">&#128274; Your sanctuary is forever yours</div>
+        <p class="prose-text" style="margin-bottom: 0; font-size: 11px; color: #3a3a3c; line-height: 1.5;">
+          All custom widgets, themes, and preferences live safely on your Mac in <code>~/.genio/</code>. Window positions and dimensions persist automatically across app restarts. Genio operates 100% on-device with complete privacy.
         </p>
       </div>
     </div>
 
     <div class="footer-seal">
-      Infinite wishes &bull; Sovereign &bull; 100% Private
+      Page 3 of 3 &bull; Infinite wishes &bull; Sovereign &bull; 100% Private
     </div>
   </div>
+
+  <script>
+    function copyCommand(e) {
+      const cmd = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(cmd);
+        const btn = document.getElementById("copyBtn");
+        if (btn) {
+          btn.innerHTML = "<span>&#10004;</span> <span>Copied to Clipboard!</span>";
+          btn.style.background = "#2e7d32";
+          btn.style.borderColor = "#2e7d32";
+          setTimeout(() => {
+            btn.innerHTML = "<span>&#10022;</span> <span>Click to Copy Awakening Command</span>";
+            btn.style.background = "#1c1c1e";
+            btn.style.borderColor = "#3a3a3c";
+          }, 2500);
+        }
+      }
+    }
+  </script>
 
 </body>
 </html>
