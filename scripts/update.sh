@@ -39,11 +39,11 @@ if ! hdiutil attach "${DMG_PATH}" -mountpoint "${MOUNT_DIR}" -nobrowse -quiet; t
 fi
 
 # Stop any running instances
-killall "Genio" 2>/dev/null || killall "My Genie" 2>/dev/null || true
+killall "Genio" 2>/dev/null || killall "My Genie" 2>/dev/null || killall "Baby Genie" 2>/dev/null || killall "baby-genie" 2>/dev/null || true
 sleep 1
 
-# Replace /Applications/Genio.app
-rm -rf "/Applications/Genio.app"
+# Replace /Applications/Genio.app and remove old names
+rm -rf "/Applications/Genio.app" "/Applications/My Genie.app" "/Applications/Baby Genie.app" "/Applications/Baby Menu.app" 2>/dev/null || true
 if [ -d "${MOUNT_DIR}/Genio.app" ]; then
   cp -R "${MOUNT_DIR}/Genio.app" "/Applications/Genio.app"
 elif compgen -G "${MOUNT_DIR}/*.app" > /dev/null; then

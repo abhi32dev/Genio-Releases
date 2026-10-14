@@ -221,7 +221,7 @@
       vertical-align: baseline;
     }
 
-    /* Master Action Card (Launch Setup / Launch Update) */
+    /* Master Action Card (Maintenance / Refresh) */
     .action-master-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 247, 237, 0.94) 100%);
       border: 1px solid var(--border-gold);
@@ -275,6 +275,107 @@
       height: 1px;
       background: linear-gradient(90deg, transparent 0%, var(--border-gold) 15%, var(--border-gold) 85%, transparent 100%);
       margin: 14px 0;
+    }
+
+    /* 2-Column Side-by-Side Awakening Grid */
+    .awakening-choice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .choice-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 247, 237, 0.94) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px 18px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px -2px rgba(140, 109, 31, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .choice-card:hover {
+      border-color: var(--border-gold-glow);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px -2px rgba(140, 109, 31, 0.14);
+    }
+
+    .choice-badge {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-deep);
+      background: #fbf2dc;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+
+    .choice-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.015em;
+      margin-bottom: 4px;
+    }
+
+    .choice-desc {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+
+    .choice-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .choice-steps li {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .choice-step-num {
+      font-weight: 700;
+      color: var(--gold-deep);
+      min-width: 14px;
+    }
+
+    .choice-footer {
+      margin-top: auto;
+    }
+
+    .choice-btn-full {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    kbd {
+      display: inline-block;
+      padding: 1px 5px;
+      font-size: 9.5px;
+      font-family: var(--font-mono);
+      background: #f4f4f5;
+      border: 1px solid #d4d4d8;
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      color: #3f3f46;
+      font-weight: 600;
     }
 
     /* Compact Pill Buttons */
@@ -608,7 +709,7 @@
     }
 
     @media (max-width: 600px) {
-      .pillars-grid, .gestures-grid, .wishes-grid {
+      .pillars-grid, .gestures-grid, .wishes-grid, .awakening-choice-grid {
         grid-template-columns: 1fr;
       }
       .action-row {
@@ -697,40 +798,48 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 2. INSTANT AWAKENING (1-CLICK LAUNCHERS)   -->
+    <!-- 2. INSTANT AWAKENING (CHOOSE YOUR PATH)    -->
     <!-- ========================================== -->
     <section class="section-head">
       <div class="section-title">&#9889; Instant Awakening</div>
+      <div class="section-tagline">Choose your preferred setup method</div>
     </section>
 
-    <!-- Master Action Runners Card -->
-    <div class="action-master-card">
-      <!-- Row 1: First-Time Setup -->
-      <div class="action-row">
-        <div class="action-meta">
-          <span class="action-badge">Initial Setup</span>
-          <div class="action-title">First-Time Awakening</div>
-          <div class="action-desc">Installs fresh Genio build to Applications &amp; configures environment</div>
+    <!-- 2-Column Side-by-Side Choice Grid -->
+    <div class="awakening-choice-grid">
+      <!-- Left Side: Interactive Launcher -->
+      <div class="choice-card">
+        <span class="choice-badge">Option 1 • 1-Click Launcher</span>
+        <div class="choice-title">Download Launcher</div>
+        <div class="choice-desc">Download a clickable macOS script that automatically opens Terminal and runs the complete setup.</div>
+        <ul class="choice-steps">
+          <li><span class="choice-step-num">1.</span> Click <strong>Launch Setup Now</strong> below</li>
+          <li><span class="choice-step-num">2.</span> Click the downloaded <strong>Awaken.command</strong> in your browser tray</li>
+        </ul>
+        <div class="choice-footer">
+          <button type="button" class="action-button btn-gold-spark choice-btn-full" onclick="launchSetup(this)" title="Download &amp; Launch Awaken.command">
+            <span class="btn-symbol">&#10022;</span>
+            <span class="btn-text">Launch Setup Now</span>
+          </button>
         </div>
-        <button type="button" class="action-button btn-gold-spark" onclick="launchSetup(this)" title="Launch Setup">
-          <span class="btn-symbol">&#10022;</span>
-          <span class="btn-text">Launch Setup Now</span>
-        </button>
       </div>
 
-      <div class="action-divider"></div>
-
-      <!-- Row 2: Refresh & Update -->
-      <div class="action-row">
-        <div class="action-meta">
-          <span class="action-badge">In-Place Update</span>
-          <div class="action-title">Refresh &amp; Update</div>
-          <div class="action-desc">Pulls the latest release in place without touching your saved wishes</div>
+      <!-- Right Side: Terminal Command -->
+      <div class="choice-card">
+        <span class="choice-badge">Option 2 • Terminal Command</span>
+        <div class="choice-title">Copy &amp; Paste in Terminal</div>
+        <div class="choice-desc">Run directly via curl in macOS Terminal. Bypasses browser downloads and Gatekeeper warnings.</div>
+        <ul class="choice-steps">
+          <li><span class="choice-step-num">1.</span> Click <strong>Copy Terminal Command</strong> below</li>
+          <li><span class="choice-step-num">2.</span> Open Terminal (<kbd>Cmd</kbd>+<kbd>Space</kbd> &rarr; <code>Terminal</code>)</li>
+          <li><span class="choice-step-num">3.</span> Paste (<kbd>Cmd</kbd>+<kbd>V</kbd>) and hit <kbd>Enter</kbd></li>
+        </ul>
+        <div class="choice-footer">
+          <button type="button" class="action-button btn-neutral-dark choice-btn-full" onclick="copySetupCommand(this)" title="Copy Command to Clipboard">
+            <span class="btn-symbol">&#128203;</span>
+            <span class="btn-text">Copy Terminal Command</span>
+          </button>
         </div>
-        <button type="button" class="action-button btn-neutral-dark" onclick="launchUpdate(this)" title="Launch Update">
-          <span class="btn-symbol">&#8635;</span>
-          <span class="btn-text">Launch Update Now</span>
-        </button>
       </div>
     </div>
 
@@ -836,6 +945,34 @@
       </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- 6. IN-PLACE REFRESH & UPDATE               -->
+    <!-- ========================================== -->
+    <section class="section-head" style="margin-top: 36px;">
+      <div class="section-title">&#8635; Refresh &amp; Update</div>
+      <div class="section-tagline">Already running Genio? Pull updates without touching your saved wishes</div>
+    </section>
+
+    <div class="action-master-card" style="margin-bottom: 28px;">
+      <div class="action-row">
+        <div class="action-meta">
+          <span class="action-badge">In-Place Update</span>
+          <div class="action-title">Refresh to Latest Release</div>
+          <div class="action-desc">Fetches and updates /Applications/Genio.app in place, preserving all widgets and settings in ~/.genio</div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button type="button" class="action-button btn-gold-spark" onclick="launchUpdate(this)" title="Download Update.command">
+            <span class="btn-symbol">&#8635;</span>
+            <span class="btn-text">Download Updater</span>
+          </button>
+          <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdateCommand(this)" title="Copy Update Command">
+            <span class="btn-symbol">&#128203;</span>
+            <span class="btn-text">Copy Update Command</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Master Footer -->
     <footer class="master-footer">
       <div class="footer-brand">Genio &bull; macOS</div>
@@ -859,6 +996,18 @@
     const SETUP_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
     const UPDATE_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash";
 
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add("visible");
+        setTimeout(() => {
+          toast.classList.remove("visible");
+        }, 3200);
+      }
+    }
+
     function copyToClipboard(text) {
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).catch(() => fallbackClipboard(text));
@@ -881,17 +1030,9 @@
       document.body.removeChild(el);
     }
 
-    function triggerSuccess(btn, symbol, originalLabel) {
+    function triggerSuccess(btn, symbol, originalLabel, successLabel) {
       btn.classList.add("copied");
-      btn.innerHTML = '<span class="btn-symbol">&#10003;</span> <span class="btn-text">Launched &amp; Copied!</span>';
-
-      const toast = document.getElementById("toast");
-      if (toast) {
-        toast.classList.add("visible");
-        setTimeout(() => {
-          toast.classList.remove("visible");
-        }, 3200);
-      }
+      btn.innerHTML = `<span class="btn-symbol">&#10003;</span> <span class="btn-text">${successLabel || 'Copied!'}</span>`;
 
       setTimeout(() => {
         btn.classList.remove("copied");
@@ -899,28 +1040,40 @@
       }, 2600);
     }
 
-    function launchCommand(cmd, launcherFile, btn, symbol, originalLabel) {
-      // 1. Copy newline-free command directly to clipboard
-      copyToClipboard(cmd);
-
-      // 2. Trigger launcher file for native Terminal invocation
+    function launchSetup(btn) {
+      copyToClipboard(SETUP_CMD);
       const link = document.createElement("a");
-      link.href = launcherFile;
-      link.download = launcherFile;
+      link.href = "Awaken.command";
+      link.download = "Awaken.command";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-
-      // 3. Visual feedback
-      triggerSuccess(btn, symbol, originalLabel);
+      triggerSuccess(btn, "&#10022;", "Launch Setup Now", "Downloaded &amp; Copied!");
+      showToast("Downloaded Awaken.command (also copied command to clipboard)");
     }
 
-    function launchSetup(btn) {
-      launchCommand(SETUP_CMD, "Awaken.command", btn, "&#10022;", "Launch Setup Now");
+    function copySetupCommand(btn) {
+      copyToClipboard(SETUP_CMD);
+      triggerSuccess(btn, "&#128203;", "Copy Terminal Command", "Command Copied!");
+      showToast("Command copied! Open Terminal and press Cmd+V to paste.");
     }
 
     function launchUpdate(btn) {
-      launchCommand(UPDATE_CMD, "Update.command", btn, "&#8635;", "Launch Update Now");
+      copyToClipboard(UPDATE_CMD);
+      const link = document.createElement("a");
+      link.href = "Update.command";
+      link.download = "Update.command";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      triggerSuccess(btn, "&#8635;", "Download Updater", "Downloaded &amp; Copied!");
+      showToast("Downloaded Update.command (also copied command to clipboard)");
+    }
+
+    function copyUpdateCommand(btn) {
+      copyToClipboard(UPDATE_CMD);
+      triggerSuccess(btn, "&#128203;", "Copy Update Command", "Command Copied!");
+      showToast("Update command copied! Open Terminal and press Cmd+V to paste.");
     }
   </script>
 
