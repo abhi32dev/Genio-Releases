@@ -8,7 +8,6 @@
     :root {
       --bg-ambient: radial-gradient(ellipse 80% 60% at 50% -10%, #fef8ea 0%, #fbf9f4 55%, #f4eee2 100%);
       --surface-glass: rgba(255, 255, 255, 0.82);
-      --surface-elevated: #ffffff;
       --border-subtle: rgba(220, 205, 175, 0.45);
       --border-gold: rgba(200, 160, 60, 0.35);
       --border-gold-glow: rgba(212, 175, 55, 0.6);
@@ -47,13 +46,12 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      padding: 48px 24px 80px 24px;
+      padding: 44px 24px 80px 24px;
       display: flex;
       justify-content: center;
       position: relative;
     }
 
-    /* Ambient background lighting effects */
     body::before {
       content: "";
       position: fixed;
@@ -77,29 +75,7 @@
     /* Top Brand Hero */
     .brand-hero {
       text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid var(--border-gold);
-      backdrop-filter: blur(8px);
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--gold-deep);
-      letter-spacing: 0.3px;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 8px rgba(140, 109, 31, 0.06);
-    }
-
-    .badge-pill .spark {
-      color: var(--gold-bright);
-      font-size: 13px;
+      margin-bottom: 24px;
     }
 
     .lamp-emblem {
@@ -124,19 +100,19 @@
       font-weight: 800;
       letter-spacing: -0.035em;
       color: var(--text-main);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       line-height: 1.15;
     }
 
     .hero-subtitle {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--gold-primary);
       letter-spacing: -0.01em;
       margin-bottom: 20px;
     }
 
-    /* Vision Card */
+    /* Vision Quote Card */
     .vision-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 248, 237, 0.95) 100%);
       border: 1px solid var(--border-gold);
@@ -231,16 +207,29 @@
       color: var(--text-muted);
     }
 
-    /* Master Action Card (Interactive Setup & Update) */
+    .brand-caps {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--gold-deep);
+    }
+
+    .gold-star {
+      color: var(--gold-bright);
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+      font-size: 13px;
+      display: inline-block;
+      vertical-align: baseline;
+    }
+
+    /* Master Action Card (Launch Setup / Launch Update) */
     .action-master-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 247, 237, 0.94) 100%);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius-lg);
       padding: 18px 22px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       box-shadow: 0 6px 20px -2px rgba(140, 109, 31, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position: relative;
-      overflow: hidden;
     }
 
     .action-row {
@@ -354,49 +343,6 @@
       font-size: 13px;
     }
 
-    /* 3 Steps Mini Cards */
-    .steps-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .step-card {
-      background: var(--surface-glass);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
-      backdrop-filter: blur(8px);
-    }
-
-    .step-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--gold-deep);
-      color: #ffffff;
-      font-size: 10px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .step-header {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
-
-    .step-subtext {
-      font-size: 10.5px;
-      color: var(--text-secondary);
-      line-height: 1.35;
-    }
-
     /* Aligned Terminal Progression Preview */
     .terminal-progression-box {
       background: #18181b;
@@ -448,7 +394,7 @@
     }
 
     .progress-symbol {
-      width: 14px;
+      width: 16px;
       text-align: center;
       font-size: 12px;
     }
@@ -598,11 +544,27 @@
       color: var(--text-muted);
     }
 
+    .footer-brand {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .latest-label {
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-right: 2px;
+    }
+
     .footer-links a {
       color: var(--gold-deep);
       text-decoration: none;
       font-weight: 600;
-      margin-left: 14px;
       transition: color 0.15s ease;
     }
 
@@ -646,7 +608,7 @@
     }
 
     @media (max-width: 600px) {
-      .pillars-grid, .steps-row, .gestures-grid, .wishes-grid {
+      .pillars-grid, .gestures-grid, .wishes-grid {
         grid-template-columns: 1fr;
       }
       .action-row {
@@ -661,9 +623,6 @@
         gap: 10px;
         text-align: center;
       }
-      .footer-links a {
-        margin: 0 8px;
-      }
     }
   </style>
 </head>
@@ -675,11 +634,6 @@
     <!-- 1. BRAND HERO                              -->
     <!-- ========================================== -->
     <header class="brand-hero">
-      <div class="badge-pill">
-        <span class="spark">✦</span>
-        <span>macOS Native Menu Bar Sanctuary</span>
-      </div>
-
       <div class="lamp-emblem">
         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -716,7 +670,7 @@
       </div>
 
       <h1 class="hero-title">Welcome to Genio</h1>
-      <p class="hero-subtitle">A Living, Wished-into-Existence Companion for Your Mac</p>
+      <p class="hero-subtitle">A Living Companion for Your Mac</p>
     </header>
 
     <div class="vision-card">
@@ -743,11 +697,10 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 2. INSTANT AWAKENING (1-CLICK RUNNERS)     -->
+    <!-- 2. INSTANT AWAKENING (1-CLICK LAUNCHERS)   -->
     <!-- ========================================== -->
     <section class="section-head">
       <div class="section-title">&#9889; Instant Awakening</div>
-      <div class="section-tagline">Clean 1-line Terminal setup &bull; Zero code exposure</div>
     </section>
 
     <!-- Master Action Runners Card -->
@@ -759,9 +712,9 @@
           <div class="action-title">First-Time Awakening</div>
           <div class="action-desc">Installs fresh Genio build to Applications &amp; configures environment</div>
         </div>
-        <button type="button" class="action-button btn-gold-spark" onclick="copySetup(this)" title="Copy Setup Command">
+        <button type="button" class="action-button btn-gold-spark" onclick="launchSetup(this)" title="Launch Setup">
           <span class="btn-symbol">&#10022;</span>
-          <span class="btn-text">Copy Setup</span>
+          <span class="btn-text">Launch Setup Now</span>
         </button>
       </div>
 
@@ -774,29 +727,10 @@
           <div class="action-title">Refresh &amp; Update</div>
           <div class="action-desc">Pulls the latest release in place without touching your saved wishes</div>
         </div>
-        <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdate(this)" title="Copy Update Command">
+        <button type="button" class="action-button btn-neutral-dark" onclick="launchUpdate(this)" title="Launch Update">
           <span class="btn-symbol">&#8635;</span>
-          <span class="btn-text">Copy Update</span>
+          <span class="btn-text">Launch Update Now</span>
         </button>
-      </div>
-    </div>
-
-    <!-- 3 Quick Steps Row -->
-    <div class="steps-row">
-      <div class="step-card">
-        <span class="step-badge">1</span>
-        <div class="step-header">Copy Command</div>
-        <div class="step-subtext">Click <strong>Copy Setup</strong> above for the clean, newline-free 1-liner.</div>
-      </div>
-      <div class="step-card">
-        <span class="step-badge">2</span>
-        <div class="step-header">Open Terminal</div>
-        <div class="step-subtext">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
-      </div>
-      <div class="step-card">
-        <span class="step-badge">3</span>
-        <div class="step-header">Paste &amp; Awaken</div>
-        <div class="step-subtext">Press <strong>Cmd + V</strong> and hit Return. Look for Genio in menu bar!</div>
       </div>
     </div>
 
@@ -814,6 +748,13 @@
       </div>
       <div class="progress-line">
         <span class="progress-symbol" style="color: #38bdf8;">&#9670;</span>
+        <span>Downloading the latest Genio build...</span>
+      </div>
+      <div class="progress-line" style="padding-left: 28px; font-size: 10px; color: #a1a1aa; font-family: var(--font-mono);">
+        <span>[##################################################] 100.0%</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #38bdf8;">&#9670;</span>
         <span>Installing fresh build into Applications</span>
       </div>
       <div class="progress-line">
@@ -825,9 +766,9 @@
         <span>Connecting AI companion</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #4ade80; font-weight: bold;">&#10023;</span>
-        <span style="color: #4ade80; font-weight: 700;">Tada! Ready.</span>
-        <span>Look for Genio in your menu bar.</span>
+        <span class="progress-symbol">&#127881;</span>
+        <span style="color: #4ade80; font-weight: 700;">Ready!</span>
+        <span>Look for Genio in your menu bar (may take a couple of seconds to appear).</span>
       </div>
     </div>
 
@@ -850,7 +791,7 @@
       </div>
       <div class="gesture-box">
         <div class="gesture-header">&#127919; 1-Click Reset</div>
-        <div class="gesture-text">Click the snap icon to instantly return directly beneath your tray icon.</div>
+        <div class="gesture-text">Click the snap icon to instantly return directly beneath your menu bar icon.</div>
       </div>
     </div>
 
@@ -859,7 +800,7 @@
     <!-- ========================================== -->
     <section class="section-head">
       <div class="section-title">&#129684; The Art of Wishing</div>
-      <div class="section-tagline">Click Genio (✨) in menu bar &bull; Type into "Make a Wish..."</div>
+      <div class="section-tagline">Click <strong class="brand-caps">GENIO</strong> <span class="gold-star">✨</span> in your menu bar &bull; Type into "Make a Wish..."</div>
     </section>
 
     <div class="wishes-grid">
@@ -897,9 +838,11 @@
 
     <!-- Master Footer -->
     <footer class="master-footer">
-      <div>Genio &bull; Crafted with care for macOS</div>
+      <div class="footer-brand">Genio &bull; macOS</div>
       <div class="footer-links">
+        <span class="latest-label">Latest:</span>
         <a href="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg">Genio.dmg</a>
+        <span>&bull;</span>
         <a href="https://github.com/abhi32dev/Genio-Releases">GitHub Releases</a>
       </div>
     </footer>
@@ -909,26 +852,22 @@
   <!-- Glass Toast Notification -->
   <div class="glass-toast" id="toast">
     <span class="toast-spark">&#10022;</span>
-    <span id="toastMsg">Command copied to clipboard! Switch to Terminal &amp; press &#8984;V</span>
+    <span id="toastMsg">Launching in Terminal... (Command copied to clipboard)</span>
   </div>
 
   <script>
     const SETUP_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
     const UPDATE_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash";
 
-    function copyToClipboard(text, btn, symbol, label) {
+    function copyToClipboard(text) {
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => {
-          triggerSuccessState(btn, symbol, label);
-        }).catch(() => {
-          fallbackClipboard(text, btn, symbol, label);
-        });
+        navigator.clipboard.writeText(text).catch(() => fallbackClipboard(text));
       } else {
-        fallbackClipboard(text, btn, symbol, label);
+        fallbackClipboard(text);
       }
     }
 
-    function fallbackClipboard(text, btn, symbol, label) {
+    function fallbackClipboard(text) {
       const el = document.createElement("textarea");
       el.value = text;
       el.style.position = "fixed";
@@ -938,37 +877,50 @@
       el.select();
       try {
         document.execCommand("copy");
-        triggerSuccessState(btn, symbol, label);
-      } catch (err) {
-        alert("Please copy manually:\n\n" + text);
-      }
+      } catch (err) {}
       document.body.removeChild(el);
     }
 
-    function triggerSuccessState(btn, symbol, label) {
+    function triggerSuccess(btn, symbol, originalLabel) {
       btn.classList.add("copied");
-      btn.innerHTML = '<span class="btn-symbol">&#10003;</span> <span class="btn-text">Copied to Clipboard!</span>';
+      btn.innerHTML = '<span class="btn-symbol">&#10003;</span> <span class="btn-text">Launched &amp; Copied!</span>';
 
       const toast = document.getElementById("toast");
       if (toast) {
         toast.classList.add("visible");
         setTimeout(() => {
           toast.classList.remove("visible");
-        }, 2800);
+        }, 3200);
       }
 
       setTimeout(() => {
         btn.classList.remove("copied");
-        btn.innerHTML = `<span class="btn-symbol">${symbol}</span> <span class="btn-text">${label}</span>`;
-      }, 2400);
+        btn.innerHTML = `<span class="btn-symbol">${symbol}</span> <span class="btn-text">${originalLabel}</span>`;
+      }, 2600);
     }
 
-    function copySetup(btn) {
-      copyToClipboard(SETUP_CMD, btn, "&#10022;", "Copy Setup");
+    function launchCommand(cmd, launcherFile, btn, symbol, originalLabel) {
+      // 1. Copy newline-free command directly to clipboard
+      copyToClipboard(cmd);
+
+      // 2. Trigger launcher file for native Terminal invocation
+      const link = document.createElement("a");
+      link.href = launcherFile;
+      link.download = launcherFile;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // 3. Visual feedback
+      triggerSuccess(btn, symbol, originalLabel);
     }
 
-    function copyUpdate(btn) {
-      copyToClipboard(UPDATE_CMD, btn, "&#8635;", "Copy Update");
+    function launchSetup(btn) {
+      launchCommand(SETUP_CMD, "Awaken.command", btn, "&#10022;", "Launch Setup Now");
+    }
+
+    function launchUpdate(btn) {
+      launchCommand(UPDATE_CMD, "Update.command", btn, "&#8635;", "Launch Update Now");
     }
   </script>
 

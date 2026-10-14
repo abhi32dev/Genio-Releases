@@ -17,7 +17,9 @@ TEMP_DIR="$(mktemp -d)"
 DMG_PATH="${TEMP_DIR}/Genio.dmg"
 MOUNT_DIR="${TEMP_DIR}/mount"
 
-if ! curl -f -L -s -S -o "${DMG_PATH}" "${RELEASE_URL}"; then
+printf "  \033[1;38;5;45m◆\033[0m   Downloading the latest Genio build...\n"
+
+if ! curl -f -L -# -o "${DMG_PATH}" "${RELEASE_URL}"; then
   printf "\n  \033[1;31m✖ Error:\033[0m Could not locate or download Genio update package.\n"
   printf "    Target URL: %s\n" "${RELEASE_URL}"
   printf "    The release location may have moved, or your Mac may be offline.\n"
@@ -58,4 +60,5 @@ rm -rf "${TEMP_DIR}"
 printf "  \033[1;38;5;45m◆\033[0m   Updated /Applications/Genio.app successfully\n"
 
 open "/Applications/Genio.app" 2>/dev/null || true
-printf "  \033[1;38;5;48m✧\033[0m   \033[1;38;5;48m\033[1mTada! Ready.\033[0m Genio refreshed in your menu bar.\n"
+sleep 1
+printf "  🎉   \033[1;38;5;48m\033[1mReady!\033[0m Look for Genio in your menu bar (may take a couple of seconds to appear).\n"
