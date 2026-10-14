@@ -58,8 +58,8 @@
       top: -120px;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 380px;
+      width: 760px;
+      height: 440px;
       background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, rgba(251, 191, 36, 0) 70%);
       pointer-events: none;
       z-index: 0;
@@ -67,7 +67,7 @@
 
     .canvas {
       width: 100%;
-      max-width: 680px;
+      max-width: 820px;
       position: relative;
       z-index: 1;
     }
@@ -819,12 +819,13 @@
     <div class="awakening-choice-grid">
       <!-- Left Side: Option A -->
       <div class="choice-card">
-        <span class="choice-badge">Option A &bull; Automatic launcher</span>
+        <span class="choice-badge">Option A &bull; One-click launcher</span>
         <div class="choice-title">Download launcher</div>
         <div class="choice-desc">Download a clickable macOS script that automatically opens Terminal and runs the complete setup.</div>
         <ol class="choice-steps">
           <li>Click <strong>Launch setup now</strong> below</li>
-          <li>Click the downloaded <strong>Awaken.command</strong> in your browser tray</li>
+          <li>Locate <strong>Awaken.command</strong> via your browser download icon or in your <strong>Downloads</strong> folder</li>
+          <li>Double-click <strong>Awaken.command</strong> to automatically run setup in Terminal</li>
         </ol>
         <div class="choice-footer">
           <button type="button" class="action-button btn-gold-spark choice-btn-full" onclick="launchSetup(this)" title="Download &amp; Launch Awaken.command">
