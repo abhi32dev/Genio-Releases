@@ -808,49 +808,30 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 2. INSTANT AWAKENING (CHOOSE YOUR PATH)    -->
+    <!-- 2. INSTANT AWAKENING                       -->
     <!-- ========================================== -->
     <section class="section-head">
       <div class="section-title">&#9889; Instant awakening</div>
-      <div class="section-tagline">Choose your preferred setup method</div>
+      <div class="section-tagline">Single-command setup &bull; zero Gatekeeper warnings</div>
     </section>
 
-    <!-- 2-Column Side-by-Side Choice Grid -->
-    <div class="awakening-choice-grid">
-      <!-- Left Side: Option A -->
-      <div class="choice-card">
-        <span class="choice-badge">Option A &bull; One-click launcher</span>
-        <div class="choice-title">Download launcher</div>
-        <div class="choice-desc">Download a clickable macOS script that automatically opens Terminal and runs the complete setup.</div>
-        <ol class="choice-steps">
-          <li>Click <strong>Launch setup now</strong> below</li>
-          <li>Locate <strong>Awaken.command</strong> via your browser download icon or in your <strong>Downloads</strong> folder</li>
-          <li>Double-click <strong>Awaken.command</strong> to automatically run setup in Terminal</li>
-        </ol>
-        <div class="choice-footer">
-          <button type="button" class="action-button btn-gold-spark choice-btn-full" onclick="launchSetup(this)" title="Download &amp; Launch Awaken.command">
-            <span class="btn-symbol">&#10022;</span>
-            <span class="btn-text">Launch setup now</span>
-          </button>
-        </div>
+    <!-- Single Master Terminal Card -->
+    <div class="action-master-card" style="margin-bottom: 20px; padding: 22px 24px;">
+      <span class="action-badge">Terminal setup</span>
+      <div class="action-title" style="font-size: 15px; margin: 6px 0 4px 0;">Awaken Genio via Terminal</div>
+      <div class="action-desc" style="font-size: 12px; line-height: 1.45; margin-bottom: 14px;">
+        Downloads fresh Genio directly into <code>/Applications</code>, configures environment PATH, and connects your on-device AI companion.
       </div>
-
-      <!-- Right Side: Option B -->
-      <div class="choice-card">
-        <span class="choice-badge">Option B &bull; Direct terminal command</span>
-        <div class="choice-title">Copy &amp; paste in terminal</div>
-        <div class="choice-desc">Run directly via curl in macOS Terminal. Bypasses browser downloads and Gatekeeper warnings.</div>
-        <ol class="choice-steps">
-          <li>Click <strong>Copy terminal command</strong> below</li>
-          <li>Open Terminal (<kbd>Cmd</kbd> + <kbd>Space</kbd> &rarr; type <code>Terminal</code>)</li>
-          <li>Paste (<kbd>Cmd</kbd> + <kbd>V</kbd>) and hit <kbd>Enter</kbd></li>
-        </ol>
-        <div class="choice-footer">
-          <button type="button" class="action-button btn-neutral-dark choice-btn-full" onclick="copySetupCommand(this)" title="Copy Command to Clipboard">
-            <span class="btn-symbol">&#128203;</span>
-            <span class="btn-text">Copy terminal command</span>
-          </button>
-        </div>
+      <ol class="choice-steps" style="margin-bottom: 18px;">
+        <li>Click <strong>Copy terminal command</strong> below</li>
+        <li>Open Terminal (<kbd>Cmd</kbd> + <kbd>Space</kbd> &rarr; type <code>Terminal</code>)</li>
+        <li>Paste (<kbd>Cmd</kbd> + <kbd>V</kbd>) and hit <kbd>Enter</kbd></li>
+      </ol>
+      <div>
+        <button type="button" class="action-button btn-gold-spark" onclick="copySetupCommand(this)" title="Copy Command to Clipboard" style="padding: 10px 24px; font-size: 12.5px;">
+          <span class="btn-symbol">&#128203;</span>
+          <span class="btn-text">Copy terminal command</span>
+        </button>
       </div>
     </div>
 
@@ -863,32 +844,29 @@
         <span class="terminal-label">Terminal Progression</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #fbbf24;">&#10022;</span>
+        <span class="progress-symbol" style="color: #fbbf24;">✦</span>
         <span>Awakening Genio...</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #38bdf8;">&#9670;</span>
-        <span>Downloading the latest Genio build...</span>
-      </div>
-      <div class="progress-line" style="padding-left: 28px; font-size: 10px; color: #a1a1aa; font-family: var(--font-mono);">
-        <span>[##################################################] 100.0%</span>
+        <span class="progress-symbol" style="color: #38bdf8;">◆</span>
+        <span>Downloading the latest Genio build... 100%</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #38bdf8;">&#9670;</span>
+        <span class="progress-symbol" style="color: #38bdf8;">◆</span>
         <span>Installing fresh build into Applications</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #c084fc;">&#9672;</span>
+        <span class="progress-symbol" style="color: #c084fc;">◈</span>
         <span>Configuring environment &amp; PATH</span>
       </div>
       <div class="progress-line">
-        <span class="progress-symbol" style="color: #fb923c;">&#10070;</span>
+        <span class="progress-symbol" style="color: #fb923c;">❖</span>
         <span>Connecting AI companion</span>
       </div>
       <div class="progress-line">
         <span class="progress-symbol">&#127881;</span>
         <span style="color: #4ade80; font-weight: 700;">Ready!</span>
-        <span>Look for Genio in your menu bar (may take a couple of seconds to appear).</span>
+        <span style="color: #a1a1aa; margin-left: 4px;">Look for the lamp icon in your menu bar.</span>
       </div>
     </div>
 
@@ -920,7 +898,7 @@
     <!-- ========================================== -->
     <section class="section-head">
       <div class="section-title">&#129684; The Art of Wishing</div>
-      <div class="section-tagline">Click <strong class="brand-caps">GENIO</strong> <span class="gold-star">✨</span> in your menu bar &bull; Type into "Make a Wish..."</div>
+      <div class="section-tagline">Click the lamp icon in your menu bar &bull; Type into "Make a Wish..."</div>
     </section>
 
     <div class="wishes-grid">
@@ -970,12 +948,8 @@
       <div class="action-desc" style="font-size: 12px; line-height: 1.45; margin-bottom: 16px;">
         Fetches and updates <code>/Applications/Genio.app</code> in place. All custom widgets, preferences, and saved states in <code>~/.genio</code> remain untouched.
       </div>
-      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-        <button type="button" class="action-button btn-gold-spark" onclick="launchUpdate(this)" title="Download Update.command">
-          <span class="btn-symbol">&#8635;</span>
-          <span class="btn-text">Download updater</span>
-        </button>
-        <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdateCommand(this)" title="Copy Update Command">
+      <div>
+        <button type="button" class="action-button btn-gold-spark" onclick="copyUpdateCommand(this)" title="Copy Update Command" style="padding: 10px 24px; font-size: 12.5px;">
           <span class="btn-symbol">&#128203;</span>
           <span class="btn-text">Copy update command</span>
         </button>
@@ -1049,34 +1023,10 @@
       }, 2600);
     }
 
-    function launchSetup(btn) {
-      copyToClipboard(SETUP_CMD);
-      const link = document.createElement("a");
-      link.href = "Awaken.command";
-      link.download = "Awaken.command";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      triggerSuccess(btn, "&#10022;", "Launch setup now", "Downloaded &amp; copied!");
-      showToast("Downloaded Awaken.command (also copied command to clipboard)");
-    }
-
     function copySetupCommand(btn) {
       copyToClipboard(SETUP_CMD);
       triggerSuccess(btn, "&#128203;", "Copy terminal command", "Command copied!");
       showToast("Command copied! Open Terminal and press Cmd+V to paste.");
-    }
-
-    function launchUpdate(btn) {
-      copyToClipboard(UPDATE_CMD);
-      const link = document.createElement("a");
-      link.href = "Update.command";
-      link.download = "Update.command";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      triggerSuccess(btn, "&#8635;", "Download updater", "Downloaded &amp; copied!");
-      showToast("Downloaded Update.command (also copied command to clipboard)");
     }
 
     function copyUpdateCommand(btn) {
