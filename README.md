@@ -43,7 +43,7 @@ If you prefer an effortless setup that configures everything automatically in us
 Open **Terminal** (`Cmd + Space` &rarr; type `Terminal` &rarr; Return) and paste:
 
 ```bash
-/bin/zsh -c 'echo "✦ Awakening Genio..."; xattr -cr "/Applications/Genio.app" 2>/dev/null; mkdir -p "$HOME/.local/bin"; export PATH="$HOME/.local/bin:$PATH"; grep -q ".local/bin" "$HOME/.zshrc" 2>/dev/null || echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> "$HOME/.zshrc"; command -v node >/dev/null 2>&1 || (command -v brew >/dev/null 2>&1 && brew install node || (curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install --lts)) >/dev/null 2>&1; echo "✓ Preparing environment"; (command -v claude || command -v codex || npm i -g --prefix "$HOME/.local" @anthropic-ai/claude-code) >/dev/null 2>&1; command -v claude >/dev/null 2>&1 && (claude --version >/dev/null 2>&1 || claude) || (codex --version >/dev/null 2>&1 || codex login); echo "✓ Connecting AI companion"; open "/Applications/Genio.app" 2>/dev/null || true; echo "✓ Ready! Look for the lamp in your menu bar."'
+curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash
 ```
 
 ---
