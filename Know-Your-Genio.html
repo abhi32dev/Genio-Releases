@@ -2,11 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Know Your Genio • A Living Companion Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Know Your Genio • A Living Companion for macOS</title>
   <style>
-    @page {
-      size: letter portrait;
-      margin: 14mm 18mm 14mm 18mm;
+    :root {
+      --bg-ambient: radial-gradient(ellipse 80% 60% at 50% -10%, #fef8ea 0%, #fbf9f4 55%, #f4eee2 100%);
+      --surface-glass: rgba(255, 255, 255, 0.82);
+      --surface-elevated: #ffffff;
+      --border-subtle: rgba(220, 205, 175, 0.45);
+      --border-gold: rgba(200, 160, 60, 0.35);
+      --border-gold-glow: rgba(212, 175, 55, 0.6);
+      --gold-primary: #8c6d1f;
+      --gold-deep: #6f5312;
+      --gold-bright: #fbbf24;
+      --gold-soft: #faf4e6;
+      --text-main: #18181b;
+      --text-secondary: #52525b;
+      --text-muted: #71717a;
+      --btn-obsidian: #18181b;
+      --btn-obsidian-hover: #09090b;
+      --emerald-dark: #14532d;
+      --emerald-bright: #22c55e;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", -system-ui, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+      --shadow-ambient: 0 4px 24px -2px rgba(140, 109, 31, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 8px 30px -4px rgba(140, 109, 31, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
     * {
@@ -16,187 +40,214 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-      color: #1c1c1e;
-      background-color: #ffffff;
+      background: var(--bg-ambient);
+      min-height: 100vh;
+      font-family: var(--font-system);
+      color: var(--text-main);
       line-height: 1.5;
-      font-size: 12px;
       -webkit-font-smoothing: antialiased;
-    }
-
-    .page {
-      page-break-after: always;
-      page-break-inside: avoid;
-      box-sizing: border-box;
-      height: 244mm;
-      max-height: 244mm;
-      overflow: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 48px 24px 80px 24px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 0;
-    }
-
-    .page:last-child {
-      page-break-after: avoid;
-    }
-
-    .page-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
+      position: relative;
     }
 
-    /* Top Celestial Brand Header */
-    .hero-header {
+    /* Ambient background lighting effects */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, rgba(251, 191, 36, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .canvas {
+      width: 100%;
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Top Brand Hero */
+    .brand-hero {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 28px;
     }
 
-    .starlight-sparkles {
-      font-size: 14px;
-      color: #c59b27;
-      letter-spacing: 8px;
-      margin-bottom: 4px;
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border-gold);
+      backdrop-filter: blur(8px);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--gold-deep);
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(140, 109, 31, 0.06);
     }
 
-    .lamp-container {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 10px auto;
-      filter: drop-shadow(0 10px 22px rgba(212, 175, 55, 0.35));
+    .badge-pill .spark {
+      color: var(--gold-bright);
+      font-size: 13px;
     }
 
-    .lamp-container svg {
+    .lamp-emblem {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 16px auto;
+      filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.32));
+      transition: transform 0.3s ease;
+    }
+
+    .lamp-emblem:hover {
+      transform: scale(1.04);
+    }
+
+    .lamp-emblem svg {
       width: 100%;
       height: 100%;
     }
 
-    .brand-title {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: #1c1c1e;
-      letter-spacing: -0.6px;
-      margin-bottom: 3px;
+    .hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      line-height: 1.15;
     }
 
-    .brand-subtitle {
-      font-size: 14px;
+    .hero-subtitle {
+      font-size: 14.5px;
       font-weight: 500;
-      color: #8c6d1f;
-      letter-spacing: 0.3px;
-      margin-bottom: 14px;
+      color: var(--gold-primary);
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
     }
 
-    .quote-card {
-      background: linear-gradient(180deg, #fffcf5 0%, #faf6eb 100%);
-      border: 1px solid #ebdcb9;
-      border-radius: 11px;
-      padding: 12px 20px;
-      margin: 0 auto 16px auto;
-      max-width: 540px;
+    /* Vision Card */
+    .vision-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 248, 237, 0.95) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 14px 24px;
       text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-ambient), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      margin-bottom: 24px;
     }
 
-    .quote-card p {
-      font-size: 13px;
+    .vision-card p {
+      font-size: 13.5px;
       font-style: italic;
-      color: #5c4d28;
+      color: #5c4718;
       line-height: 1.45;
+      font-weight: 450;
     }
 
-    .section-title {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #1c1c1e;
-      letter-spacing: -0.3px;
-      margin-bottom: 8px;
-    }
-
-    .prose-text {
-      font-size: 12px;
-      color: #48484a;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .card {
-      background: #ffffff;
-      border: 1px solid #eae5db;
-      border-radius: 10px;
-      padding: 13px 16px;
-      margin-bottom: 11px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .card-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #8c6d1f;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 11px;
-      margin-bottom: 10px;
-    }
-
-    .grid-3 {
+    /* 3 Pillars Grid */
+    .pillars-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 11px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
     .pillar-card {
-      background: #faf8f5;
-      border: 1px solid #ede8de;
-      border-radius: 9px;
-      padding: 14px 12px;
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 14px 12px 14px;
       text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.2s ease;
     }
 
-    .pillar-icon {
-      font-size: 20px;
-      margin-bottom: 6px;
+    .pillar-card:hover {
+      border-color: var(--border-gold-glow);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-1px);
+    }
+
+    .pillar-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #faf4e8;
+      border: 1px solid var(--border-gold);
+      font-size: 15px;
+      margin-bottom: 8px;
     }
 
     .pillar-title {
-      font-weight: 600;
       font-size: 12.5px;
-      color: #8c6d1f;
+      font-weight: 700;
+      color: var(--text-main);
       margin-bottom: 3px;
+      letter-spacing: -0.01em;
     }
 
     .pillar-desc {
       font-size: 11px;
-      color: #636366;
+      color: var(--text-secondary);
       line-height: 1.35;
     }
 
-    /* Awakening & Refresh Action Card */
-    .action-card {
-      background: linear-gradient(180deg, #fffcf5 0%, #faf6eb 100%);
-      border: 1px solid #ebdcb9;
-      border-radius: 11px;
-      padding: 13px 18px;
+    /* Section Headers */
+    .section-head {
       margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(140, 109, 31, 0.04);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-tagline {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* Master Action Card (Interactive Setup & Update) */
+    .action-master-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 247, 237, 0.94) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 20px -2px rgba(140, 109, 31, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      position: relative;
+      overflow: hidden;
     }
 
     .action-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
 
     .action-meta {
@@ -204,510 +255,720 @@
       text-align: left;
     }
 
-    .action-title {
-      font-size: 12.5px;
+    .action-badge {
+      display: inline-block;
+      font-size: 9.5px;
       font-weight: 700;
-      color: #1c1c1e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-deep);
+      background: #fbf2dc;
+      padding: 1px 7px;
+      border-radius: var(--radius-full);
+      margin-bottom: 3px;
+    }
+
+    .action-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.015em;
       margin-bottom: 2px;
-      letter-spacing: -0.2px;
     }
 
     .action-desc {
-      font-size: 11px;
-      color: #636366;
+      font-size: 11.5px;
+      color: var(--text-secondary);
       line-height: 1.35;
     }
 
-    .action-row-divider {
+    .action-divider {
       height: 1px;
-      background: #ebdcb9;
-      margin: 10px 0;
+      background: linear-gradient(90deg, transparent 0%, var(--border-gold) 15%, var(--border-gold) 85%, transparent 100%);
+      margin: 14px 0;
     }
 
-    .action-btn {
+    /* Compact Pill Buttons */
+    .action-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
       border: none;
       outline: none;
-      border-radius: 9999px;
-      padding: 7px 16px;
-      font-size: 11.5px;
+      border-radius: var(--radius-full);
+      padding: 9px 20px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: -0.1px;
+      letter-spacing: -0.01em;
       cursor: pointer;
       white-space: nowrap;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.18s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       -webkit-appearance: none;
       appearance: none;
       user-select: none;
     }
 
-    .action-btn-gold {
-      background: #1c1c1e;
-      color: #ffd866;
+    .btn-gold-spark {
+      background: var(--btn-obsidian);
+      color: var(--gold-bright);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.25);
     }
 
-    .action-btn-dark {
-      background: #2c2c2e;
-      color: #f5f5f7;
-    }
-
-    .action-btn:hover {
-      background: #000000;
+    .btn-gold-spark:hover {
+      background: var(--btn-obsidian-hover);
       color: #ffffff;
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 6px 16px -2px rgba(251, 191, 36, 0.35);
+      border-color: rgba(251, 191, 36, 0.45);
     }
 
-    .action-btn:active {
+    .btn-neutral-dark {
+      background: #27272a;
+      color: #f4f4f5;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-neutral-dark:hover {
+      background: #18181b;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .action-button:active {
       transform: translateY(0);
     }
 
-    .action-btn.copied {
-      background: #1b5e20 !important;
+    .action-button.copied {
+      background: var(--emerald-dark) !important;
       color: #ffffff !important;
+      border-color: var(--emerald-bright) !important;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3) !important;
     }
 
-    .action-btn .btn-icon {
-      font-size: 11px;
+    .action-button .btn-symbol {
+      font-size: 13px;
     }
 
+    /* 3 Steps Mini Cards */
     .steps-row {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 10px;
-      margin-top: 14px;
-      text-align: left;
+      margin-bottom: 14px;
     }
 
-    .step-card-mini {
-      background: #ffffff;
-      border: 1px solid #ede8de;
-      border-radius: 8px;
+    .step-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
       padding: 10px 12px;
+      backdrop-filter: blur(8px);
     }
 
-    .step-num-pill {
-      display: inline-block;
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: #8c6d1f;
+      background: var(--gold-deep);
       color: #ffffff;
       font-size: 10px;
       font-weight: 700;
-      text-align: center;
-      line-height: 18px;
       margin-bottom: 4px;
     }
 
-    .step-card-title {
+    .step-header {
       font-size: 11.5px;
       font-weight: 700;
-      color: #1c1c1e;
+      color: var(--text-main);
       margin-bottom: 2px;
     }
 
-    .step-card-desc {
+    .step-subtext {
       font-size: 10.5px;
-      color: #636366;
+      color: var(--text-secondary);
       line-height: 1.35;
     }
 
-    .flow-preview {
-      background: #ffffff;
-      border: 1px solid #ede8de;
-      border-radius: 9px;
-      padding: 12px 14px;
-      margin-top: 12px;
+    /* Aligned Terminal Progression Preview */
+    .terminal-progression-box {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .flow-step-line {
+    .terminal-title-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-      font-size: 10.5px;
-      color: #3a3a3c;
-      margin-bottom: 4px;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #27272a;
     }
 
-    .flow-step-line:last-child {
-      margin-bottom: 0;
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: #a1a1aa;
+      margin-left: 6px;
+      letter-spacing: 0.2px;
     }
 
-    .flow-icon {
+    .progress-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
       font-size: 11px;
-      width: 16px;
-      text-align: center;
-    }
-
-    .wish-card {
-      background: #ffffff;
-      border: 1px solid #eae5db;
-      border-radius: 9px;
-      padding: 11px 13px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .wish-header {
-      font-size: 12px;
-      font-weight: 700;
-      color: #8c6d1f;
+      color: #e4e4e7;
       margin-bottom: 5px;
     }
 
-    .wish-item {
-      font-size: 11px;
-      color: #48484a;
-      line-height: 1.38;
-      margin-bottom: 4px;
-    }
-
-    .wish-item:last-child {
+    .progress-line:last-child {
       margin-bottom: 0;
     }
 
-    .wish-quote {
-      font-style: italic;
-      color: #725816;
+    .progress-symbol {
+      width: 14px;
+      text-align: center;
+      font-size: 12px;
     }
 
-    .gesture-row {
+    /* Canvas Gestures */
+    .gestures-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 32px;
     }
 
-    .gesture-card {
-      background: #faf9f6;
-      border: 1px solid #e5ded2;
-      border-radius: 8px;
-      padding: 10px 11px;
+    .gesture-box {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
       text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.2s ease;
     }
 
-    .gesture-title {
-      font-size: 11.5px;
+    .gesture-box:hover {
+      border-color: var(--border-gold-glow);
+      transform: translateY(-1px);
+    }
+
+    .gesture-header {
+      font-size: 12px;
       font-weight: 700;
-      color: #8c6d1f;
+      color: var(--gold-deep);
       margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
 
-    .gesture-desc {
+    .gesture-text {
       font-size: 10.5px;
-      color: #5c5c60;
+      color: var(--text-secondary);
       line-height: 1.35;
     }
 
-    .footer-seal {
-      text-align: center;
-      padding-top: 9px;
-      font-size: 10px;
-      color: #8a8a8e;
-      letter-spacing: 0.5px;
-      border-top: 1px solid #f2eee6;
+    /* Wishing Cards Grid */
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .wish-box {
+      background: var(--surface-glass);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 13px 15px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-ambient);
+      transition: all 0.2s ease;
+    }
+
+    .wish-box:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-1px);
+    }
+
+    .wish-category {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--gold-deep);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .wish-line {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.38;
+      margin-bottom: 5px;
+      position: relative;
+      padding-left: 10px;
+    }
+
+    .wish-line::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-primary);
+    }
+
+    .wish-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .wish-quote-phrase {
+      font-style: italic;
+      color: #614a13;
+    }
+
+    /* Sovereignty & Privacy Box */
+    .privacy-sanctuary {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 246, 237, 0.95) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-ambient);
+    }
+
+    .privacy-header {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .privacy-text {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .privacy-text code {
+      background: rgba(220, 205, 175, 0.35);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    .master-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .footer-links a {
+      color: var(--gold-deep);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 14px;
+      transition: color 0.15s ease;
+    }
+
+    .footer-links a:hover {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    /* Floating Toast */
+    .glass-toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(24, 24, 27, 0.94);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+    }
+
+    .glass-toast.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-spark {
+      color: var(--gold-bright);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .pillars-grid, .steps-row, .gestures-grid, .wishes-grid {
+        grid-template-columns: 1fr;
+      }
+      .action-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .action-button {
+        width: 100%;
+      }
+      .master-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+      .footer-links a {
+        margin: 0 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================================== -->
-  <!-- PAGE 1: The Sanctuary                      -->
-  <!-- ========================================== -->
-  <div class="page" id="page-1">
-    <div class="page-content">
-      <div class="hero-header">
-        <div class="starlight-sparkles">&#10022; &#10022; &#10022;</div>
+  <main class="canvas">
 
-        <div class="lamp-container">
-          <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="gold-body" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFE484" />
-                <stop offset="45%" stop-color="#E8BE42" />
-                <stop offset="100%" stop-color="#A87A18" />
-              </linearGradient>
-              <radialGradient id="lamp-aura" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#FCD968" stop-opacity="0.45" />
-                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
-              </radialGradient>
-              <linearGradient id="gold-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#E8BE42" />
-                <stop offset="100%" stop-color="#FFEFA8" />
-              </linearGradient>
-            </defs>
-
-            <circle cx="512" cy="512" r="420" fill="url(#lamp-aura)" />
-
-            <g transform="translate(132, 110)">
-              <rect x="243" y="547" width="198" height="38" rx="15" fill="url(#gold-body)" stroke="#8A6310" stroke-width="6" />
-              <path d="M 251 547 C 190 425 243 350 494 350 C 623 350 638 258 638 258 C 638 258 653 289 517 441 C 426 547 380 547 251 547 Z" fill="url(#gold-body)" stroke="#8A6310" stroke-width="6" />
-              <ellipse cx="350" cy="448" rx="167" ry="99" fill="url(#gold-body)" stroke="#8A6310" stroke-width="6" />
-              <ellipse cx="623" cy="270" rx="23" ry="27" fill="url(#gold-accent)" stroke="#8A6310" stroke-width="5" />
-              <path d="M 243 350 C 106 350 106 486 243 486" fill="none" stroke="url(#gold-body)" stroke-width="42" stroke-linecap="round" />
-              <path d="M 243 350 C 106 350 106 486 243 486" fill="none" stroke="#8A6310" stroke-width="8" stroke-linecap="round" />
-              <ellipse cx="350" cy="334" rx="38" ry="23" fill="url(#gold-body)" stroke="#8A6310" stroke-width="5" />
-              <circle cx="350" cy="296" r="16" fill="#FFEFA8" stroke="#8A6310" stroke-width="4" />
-              <path d="M 631 167 Q 631 129 601 129 Q 631 129 631 91 Q 631 129 661 129 Q 631 129 631 167 Z" fill="#E8BE42" />
-              <path d="M 547 205 Q 547 182 532 182 Q 547 182 547 159 Q 547 182 562 182 Q 547 182 547 205 Z" fill="#FCD968" />
-              <circle cx="680" cy="180" r="8" fill="#E8BE42" />
-              <circle cx="585" cy="120" r="5" fill="#FFEFA8" />
-            </g>
-          </svg>
-        </div>
-
-        <h1 class="brand-title">Welcome to Genio</h1>
-        <div class="brand-subtitle">A Living Companion for Your Mac</div>
+    <!-- ========================================== -->
+    <!-- 1. BRAND HERO                              -->
+    <!-- ========================================== -->
+    <header class="brand-hero">
+      <div class="badge-pill">
+        <span class="spark">✦</span>
+        <span>macOS Native Menu Bar Sanctuary</span>
       </div>
 
-      <div class="quote-card">
-        <p>"Software designed not just to be used, but to be wished into existence."</p>
+      <div class="lamp-emblem">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gold-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFE484" />
+              <stop offset="45%" stop-color="#E8BE42" />
+              <stop offset="100%" stop-color="#A87A18" />
+            </linearGradient>
+            <radialGradient id="aura-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FCD968" stop-opacity="0.45" />
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="accent-spec" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#E8BE42" />
+              <stop offset="100%" stop-color="#FFEFA8" />
+            </linearGradient>
+          </defs>
+          <circle cx="512" cy="512" r="420" fill="url(#aura-glow)" />
+          <g transform="translate(132, 110)">
+            <rect x="243" y="547" width="198" height="38" rx="15" fill="url(#gold-fill)" stroke="#8A6310" stroke-width="6" />
+            <path d="M 251 547 C 190 425 243 350 494 350 C 623 350 638 258 638 258 C 638 258 653 289 517 441 C 426 547 380 547 251 547 Z" fill="url(#gold-fill)" stroke="#8A6310" stroke-width="6" />
+            <ellipse cx="350" cy="448" rx="167" ry="99" fill="url(#gold-fill)" stroke="#8A6310" stroke-width="6" />
+            <ellipse cx="623" cy="270" rx="23" ry="27" fill="url(#accent-spec)" stroke="#8A6310" stroke-width="5" />
+            <path d="M 243 350 C 106 350 106 486 243 486" fill="none" stroke="url(#gold-fill)" stroke-width="42" stroke-linecap="round" />
+            <path d="M 243 350 C 106 350 106 486 243 486" fill="none" stroke="#8A6310" stroke-width="8" stroke-linecap="round" />
+            <ellipse cx="350" cy="334" rx="38" ry="23" fill="url(#gold-fill)" stroke="#8A6310" stroke-width="5" />
+            <circle cx="350" cy="296" r="16" fill="#FFEFA8" stroke="#8A6310" stroke-width="4" />
+            <path d="M 631 167 Q 631 129 601 129 Q 631 129 631 91 Q 631 129 661 129 Q 631 129 631 167 Z" fill="#E8BE42" />
+            <path d="M 547 205 Q 547 182 532 182 Q 547 182 547 159 Q 547 182 562 182 Q 547 182 547 205 Z" fill="#FCD968" />
+            <circle cx="680" cy="180" r="8" fill="#E8BE42" />
+            <circle cx="585" cy="120" r="5" fill="#FFEFA8" />
+          </g>
+        </svg>
       </div>
 
-      <div class="section-title">The Sanctuary</div>
-      <p class="prose-text">
-        Genio introduces a new kind of software experience to your Mac: a quiet, living sanctuary nestled right in your menu bar.
-      </p>
-      <p class="prose-text">
-        It shapes itself around your life. Whenever inspiration strikes or a personal need arises, type a wish, and a living, responsive interface comes to life right before your eyes.
-      </p>
-      <p class="prose-text">
-        Whether you seek a serene moment of mindfulness, a live instrument for your creative workflow, or a gentle morning ritual to start your day, Genio manifests it with grace, elegance, and absolute privacy.
-      </p>
-      <p class="prose-text" style="font-weight: 500; color: #8c6d1f; margin-bottom: 0;">
-        Welcome to a canvas made entirely for you.
-      </p>
+      <h1 class="hero-title">Welcome to Genio</h1>
+      <p class="hero-subtitle">A Living, Wished-into-Existence Companion for Your Mac</p>
+    </header>
 
-      <div class="grid-3">
-        <div class="pillar-card">
-          <div class="pillar-icon">&#127807;</div>
-          <div class="pillar-title">Serene &amp; Mindful</div>
-          <div class="pillar-desc">A calm presence in your menu bar that respects your focus.</div>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">&#10024;</div>
-          <div class="pillar-title">Living Interface</div>
-          <div class="pillar-desc">Shapes real, native widgets on demand to fulfill your wishes.</div>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">&#128274;</div>
-          <div class="pillar-title">100% Private</div>
-          <div class="pillar-desc">Your thoughts, data, and wishes remain strictly on your Mac.</div>
-        </div>
+    <div class="vision-card">
+      <p>"Software designed not just to be used, but to be wished into existence."</p>
+    </div>
+
+    <!-- 3 Core Pillars -->
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon-badge">&#127807;</div>
+        <div class="pillar-title">Serene &amp; Mindful</div>
+        <div class="pillar-desc">A calm presence in your menu bar that respects your focus and workflow.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon-badge">&#10024;</div>
+        <div class="pillar-title">Living Interface</div>
+        <div class="pillar-desc">Shapes real, native widgets on demand to fulfill your creative wishes.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon-badge">&#128274;</div>
+        <div class="pillar-title">100% Private</div>
+        <div class="pillar-desc">Your thoughts, telemetry, and wishes live strictly on your Mac.</div>
       </div>
     </div>
 
-    <div class="footer-seal">
-      Page 1 of 3 &bull; Genio Sanctuary &bull; Designed with care for macOS
-    </div>
-  </div>
+    <!-- ========================================== -->
+    <!-- 2. INSTANT AWAKENING (1-CLICK RUNNERS)     -->
+    <!-- ========================================== -->
+    <section class="section-head">
+      <div class="section-title">&#9889; Instant Awakening</div>
+      <div class="section-tagline">Clean 1-line Terminal setup &bull; Zero code exposure</div>
+    </section>
 
-  <!-- ========================================== -->
-  <!-- PAGE 2: Instant Awakening (No Clutter)     -->
-  <!-- ========================================== -->
-  <div class="page" id="page-2">
-    <div class="page-content">
-      <div class="section-title">Instant Awakening</div>
-      <p class="prose-text" style="margin-bottom: 12px; font-size: 12px; color: #636366;">
-        Zero manual setup required. Simply copy the awakening command, paste into Terminal, and let Genio prepare itself.
-      </p>
-
-      <!-- COMMAND RUNNERS CARD (No Raw URLs, Compact Buttons Right, Text Left) -->
-      <div class="action-card">
-        <!-- Row 1: Initial Setup / Awakening -->
-        <div class="action-row">
-          <div class="action-meta">
-            <div class="action-title">First-Time Setup</div>
-            <div class="action-desc">Cleanly installs fresh Genio build and configures environment</div>
-          </div>
-          <button type="button" class="action-btn action-btn-gold" onclick="copySetup(this)" title="Copy Setup Command">
-            <span class="btn-icon">✦</span>
-            <span class="btn-label">Copy Setup</span>
-          </button>
+    <!-- Master Action Runners Card -->
+    <div class="action-master-card">
+      <!-- Row 1: First-Time Setup -->
+      <div class="action-row">
+        <div class="action-meta">
+          <span class="action-badge">Initial Setup</span>
+          <div class="action-title">First-Time Awakening</div>
+          <div class="action-desc">Installs fresh Genio build to Applications &amp; configures environment</div>
         </div>
-
-        <div class="action-row-divider"></div>
-
-        <!-- Row 2: Refresh / Update -->
-        <div class="action-row">
-          <div class="action-meta">
-            <div class="action-title">Refresh &amp; Update</div>
-            <div class="action-desc">Pulls the latest release in place without losing your custom wishes</div>
-          </div>
-          <button type="button" class="action-btn action-btn-dark" onclick="copyUpdate(this)" title="Copy Update Command">
-            <span class="btn-icon">↻</span>
-            <span class="btn-label">Copy Update</span>
-          </button>
-        </div>
+        <button type="button" class="action-button btn-gold-spark" onclick="copySetup(this)" title="Copy Setup Command">
+          <span class="btn-symbol">&#10022;</span>
+          <span class="btn-text">Copy Setup</span>
+        </button>
       </div>
 
-      <!-- 3 Quick Steps -->
-      <div class="steps-row">
-        <div class="step-card-mini">
-          <span class="step-num-pill">1</span>
-          <div class="step-card-title">Copy Command</div>
-          <div class="step-card-desc">Click button above (or double-click <strong>Awaken.command</strong> in DMG).</div>
-        </div>
-        <div class="step-card-mini">
-          <span class="step-num-pill">2</span>
-          <div class="step-card-title">Open Terminal</div>
-          <div class="step-card-desc">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
-        </div>
-        <div class="step-card-mini">
-          <span class="step-num-pill">3</span>
-          <div class="step-card-title">Paste &amp; Awaken</div>
-          <div class="step-card-desc">Press <strong>Cmd + V</strong> and hit Return. Look for Genio in menu bar!</div>
-        </div>
-      </div>
+      <div class="action-divider"></div>
 
-      <!-- Live Experience Progression Preview -->
-      <div class="flow-preview">
-        <div style="font-size: 11px; font-weight: 700; color: #8c6d1f; margin-bottom: 8px;">
-          What Happens Automatically in Terminal:
+      <!-- Row 2: Refresh & Update -->
+      <div class="action-row">
+        <div class="action-meta">
+          <span class="action-badge">In-Place Update</span>
+          <div class="action-title">Refresh &amp; Update</div>
+          <div class="action-desc">Pulls the latest release in place without touching your saved wishes</div>
         </div>
-        <div class="flow-step-line">
-          <span class="flow-icon" style="color: #c59b27;">&#10022;</span>
-          <span>Awakening Genio...</span>
-        </div>
-        <div class="flow-step-line">
-          <span class="flow-icon" style="color: #29b6f6;">&#9670;</span>
-          <span>Installing fresh build into Applications</span>
-        </div>
-        <div class="flow-step-line">
-          <span class="flow-icon" style="color: #ab47bc;">&#9672;</span>
-          <span>Configuring environment &amp; PATH</span>
-        </div>
-        <div class="flow-step-line">
-          <span class="flow-icon" style="color: #ff7043;">&#10070;</span>
-          <span>Connecting AI companion</span>
-        </div>
-        <div class="flow-step-line">
-          <span class="flow-icon" style="color: #2e7d32; font-weight: bold;">&#10023;</span>
-          <span style="color: #2e7d32; font-weight: 700;">Tada! Ready.</span>
-          <span>Look for Genio in your menu bar.</span>
-        </div>
-      </div>
-
-      <!-- Direct Downloads Card -->
-      <div class="card" style="margin-top: 12px; margin-bottom: 0;">
-        <div class="card-title">&#128230; Direct Download &amp; Offline Release</div>
-        <p class="prose-text" style="font-size: 11px; color: #5c5c60; margin-bottom: 0;">
-          Prefer manual installation? Download the universal DMG: <a href="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg" style="color: #8c6d1f; font-weight: 600; text-decoration: underline;">Genio.dmg</a> &bull; Release page: <a href="https://github.com/abhi32dev/Genio-Releases/releases/tag/macOS/v0.1.0" style="color: #8c6d1f; text-decoration: underline;">GitHub Releases</a>
-        </p>
+        <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdate(this)" title="Copy Update Command">
+          <span class="btn-symbol">&#8635;</span>
+          <span class="btn-text">Copy Update</span>
+        </button>
       </div>
     </div>
 
-    <div class="footer-seal">
-      Page 2 of 3 &bull; Instant Awakening &bull; 1-Click Operation
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- PAGE 3: The Art of Wishing & Native Canvas -->
-  <!-- ========================================== -->
-  <div class="page" id="page-3">
-    <div class="page-content">
-      <div class="section-title">The Art of Wishing &amp; Canvas Freedom</div>
-      <p class="prose-text" style="margin-bottom: 11px;">
-        Click Genio (<strong>✨</strong>) in your menu bar, type into <strong>"Make a Wish..."</strong>, and watch your thoughts take living form:
-      </p>
-
-      <!-- 3 Gestures & Controls -->
-      <div class="gesture-row">
-        <div class="gesture-card">
-          <div class="gesture-title">&#128204; Always on Top</div>
-          <div class="gesture-desc">Floats over all fullscreen apps and spaces without switching desktops.</div>
-        </div>
-        <div class="gesture-card">
-          <div class="gesture-title">&#9995; Drag Anywhere</div>
-          <div class="gesture-desc">Drag the header (<strong style="color: #8c6d1f;">GENIO &#10024;</strong>) to reposition anywhere on display.</div>
-        </div>
-        <div class="gesture-card">
-          <div class="gesture-title">&#127919; 1-Click Reset</div>
-          <div class="gesture-desc">Click the snap icon to instantly return directly beneath your menu bar icon.</div>
-        </div>
+    <!-- 3 Quick Steps Row -->
+    <div class="steps-row">
+      <div class="step-card">
+        <span class="step-badge">1</span>
+        <div class="step-header">Copy Command</div>
+        <div class="step-subtext">Click <strong>Copy Setup</strong> above for the clean, newline-free 1-liner.</div>
       </div>
-
-      <!-- 4 Wish Categories Grid -->
-      <div class="grid-2">
-        <!-- Mindfulness -->
-        <div class="wish-card">
-          <div class="wish-header">&#127807; Mindfulness &amp; Stillness</div>
-          <div class="wish-item">&bull; <span class="wish-quote">"manifest a peaceful breathing circle with ambient sound"</span></div>
-          <div class="wish-item">&bull; <span class="wish-quote">"grant a mindful hydration and posture pause for deep work"</span></div>
-        </div>
-
-        <!-- Morning Inspiration -->
-        <div class="wish-card">
-          <div class="wish-header">&#10024; Morning Focus &amp; Inspiration</div>
-          <div class="wish-item">&bull; <span class="wish-quote">"manifest a morning wisdom quote with daily sunrise notes"</span></div>
-          <div class="wish-item">&bull; <span class="wish-quote">"create an intentional 3-item priority list for today"</span></div>
-        </div>
-
-        <!-- Living Instruments -->
-        <div class="wish-card">
-          <div class="wish-header">&#128202; Living Instruments &amp; Telemetry</div>
-          <div class="wish-item">&bull; <span class="wish-quote">"summon a live telemetry gauge for my processor, memory, and battery"</span></div>
-          <div class="wish-item">&bull; <span class="wish-quote">"manifest a clean tracker for my weekly creative goals"</span></div>
-        </div>
-
-        <!-- Atmosphere -->
-        <div class="wish-card">
-          <div class="wish-header">&#127925; Atmosphere &amp; Space</div>
-          <div class="wish-item">&bull; <span class="wish-quote">"conjure a minimalist audio controller for lo-fi and focus beats"</span></div>
-          <div class="wish-item">&bull; <span class="wish-quote">"summon a subtle world clock tracking Tokyo, London, and New York"</span></div>
-        </div>
+      <div class="step-card">
+        <span class="step-badge">2</span>
+        <div class="step-header">Open Terminal</div>
+        <div class="step-subtext">Press <strong>Cmd + Space</strong>, type <strong>Terminal</strong>, and hit Return.</div>
       </div>
-
-      <p class="prose-text" style="font-size: 11.5px; color: #636366; margin-bottom: 11px;">
-        When your widget appears, click <strong>"Keep"</strong> to save it permanently, or type another wish to transform it anew.
-      </p>
-
-      <!-- Sanctuary & Sovereignty Card -->
-      <div class="card" style="padding: 12px 16px; margin-bottom: 0; background: #faf9f6; border: 1px solid #e5ded2;">
-        <div class="card-title">&#128274; Your sanctuary is forever yours</div>
-        <p class="prose-text" style="margin-bottom: 0; font-size: 11px; color: #3a3a3c; line-height: 1.5;">
-          All custom widgets, themes, and preferences live safely on your Mac in <code>~/.genio/</code>. Window positions and dimensions persist automatically across app restarts. Genio operates 100% on-device with complete privacy.
-        </p>
+      <div class="step-card">
+        <span class="step-badge">3</span>
+        <div class="step-header">Paste &amp; Awaken</div>
+        <div class="step-subtext">Press <strong>Cmd + V</strong> and hit Return. Look for Genio in menu bar!</div>
       </div>
     </div>
 
-    <div class="footer-seal">
-      Page 3 of 3 &bull; Infinite wishes &bull; Sovereign &bull; 100% Private
+    <!-- Aligned Terminal Progression Preview -->
+    <div class="terminal-progression-box">
+      <div class="terminal-title-bar">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <span class="terminal-label">Terminal Progression</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #fbbf24;">&#10022;</span>
+        <span>Awakening Genio...</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #38bdf8;">&#9670;</span>
+        <span>Installing fresh build into Applications</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #c084fc;">&#9672;</span>
+        <span>Configuring environment &amp; PATH</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #fb923c;">&#10070;</span>
+        <span>Connecting AI companion</span>
+      </div>
+      <div class="progress-line">
+        <span class="progress-symbol" style="color: #4ade80; font-weight: bold;">&#10023;</span>
+        <span style="color: #4ade80; font-weight: 700;">Tada! Ready.</span>
+        <span>Look for Genio in your menu bar.</span>
+      </div>
     </div>
+
+    <!-- ========================================== -->
+    <!-- 3. CANVAS FREEDOM & GESTURES               -->
+    <!-- ========================================== -->
+    <section class="section-head">
+      <div class="section-title">&#128075; Canvas Freedom</div>
+      <div class="section-tagline">Intuitive window ergonomics for macOS</div>
+    </section>
+
+    <div class="gestures-grid">
+      <div class="gesture-box">
+        <div class="gesture-header">&#128204; Always on Top</div>
+        <div class="gesture-text">Floats smoothly over fullscreen applications &amp; spaces without space jumps.</div>
+      </div>
+      <div class="gesture-box">
+        <div class="gesture-header">&#9995; Drag Anywhere</div>
+        <div class="gesture-text">Drag header (<strong style="color: var(--gold-deep);">GENIO &#10024;</strong>) to position anywhere on your display.</div>
+      </div>
+      <div class="gesture-box">
+        <div class="gesture-header">&#127919; 1-Click Reset</div>
+        <div class="gesture-text">Click the snap icon to instantly return directly beneath your tray icon.</div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. THE ART OF WISHING                      -->
+    <!-- ========================================== -->
+    <section class="section-head">
+      <div class="section-title">&#129684; The Art of Wishing</div>
+      <div class="section-tagline">Click Genio (✨) in menu bar &bull; Type into "Make a Wish..."</div>
+    </section>
+
+    <div class="wishes-grid">
+      <div class="wish-box">
+        <div class="wish-category">&#127807; Mindfulness &amp; Stillness</div>
+        <div class="wish-line"><span class="wish-quote-phrase">"manifest a peaceful breathing circle with ambient sound"</span></div>
+        <div class="wish-line"><span class="wish-quote-phrase">"grant a mindful hydration and posture pause for deep work"</span></div>
+      </div>
+      <div class="wish-box">
+        <div class="wish-category">&#10024; Morning Focus &amp; Inspiration</div>
+        <div class="wish-line"><span class="wish-quote-phrase">"manifest a morning wisdom quote with daily sunrise notes"</span></div>
+        <div class="wish-line"><span class="wish-quote-phrase">"create an intentional 3-item priority list for today"</span></div>
+      </div>
+      <div class="wish-box">
+        <div class="wish-category">&#128202; Living Telemetry</div>
+        <div class="wish-line"><span class="wish-quote-phrase">"summon a live telemetry gauge for processor, memory, battery"</span></div>
+        <div class="wish-line"><span class="wish-quote-phrase">"manifest a clean tracker for my weekly creative goals"</span></div>
+      </div>
+      <div class="wish-box">
+        <div class="wish-category">&#127925; Atmosphere &amp; Beats</div>
+        <div class="wish-line"><span class="wish-quote-phrase">"conjure a minimalist audio controller for lo-fi and focus beats"</span></div>
+        <div class="wish-line"><span class="wish-quote-phrase">"summon a subtle world clock tracking Tokyo, London, NYC"</span></div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 5. SOVEREIGNTY & PRIVACY                   -->
+    <!-- ========================================== -->
+    <div class="privacy-sanctuary">
+      <div class="privacy-header">&#128274; Your sanctuary is forever sovereign</div>
+      <div class="privacy-text">
+        All widgets, state, themes, and preferences live safely on your Mac in <code>~/.genio/</code>. Window positions and geometries persist automatically across app restarts. Genio operates 100% on-device with zero analytics and zero telemetry.
+      </div>
+    </div>
+
+    <!-- Master Footer -->
+    <footer class="master-footer">
+      <div>Genio &bull; Crafted with care for macOS</div>
+      <div class="footer-links">
+        <a href="https://github.com/abhi32dev/Genio-Releases/releases/download/macOS/v0.1.0/Genio.dmg">Genio.dmg</a>
+        <a href="https://github.com/abhi32dev/Genio-Releases">GitHub Releases</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Glass Toast Notification -->
+  <div class="glass-toast" id="toast">
+    <span class="toast-spark">&#10022;</span>
+    <span id="toastMsg">Command copied to clipboard! Switch to Terminal &amp; press &#8984;V</span>
   </div>
 
   <script>
     const SETUP_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/awake.sh | bash";
     const UPDATE_CMD = "curl -fsSL https://raw.githubusercontent.com/abhi32dev/Genio-Releases/main/scripts/update.sh | bash";
 
-    function copySetup(btn) {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(SETUP_CMD);
+    function copyToClipboard(text, btn, symbol, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          triggerSuccessState(btn, symbol, label);
+        }).catch(() => {
+          fallbackClipboard(text, btn, symbol, label);
+        });
+      } else {
+        fallbackClipboard(text, btn, symbol, label);
       }
-      flashCopied(btn, "✦", "Copy Setup");
+    }
+
+    function fallbackClipboard(text, btn, symbol, label) {
+      const el = document.createElement("textarea");
+      el.value = text;
+      el.style.position = "fixed";
+      el.style.left = "-9999px";
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      try {
+        document.execCommand("copy");
+        triggerSuccessState(btn, symbol, label);
+      } catch (err) {
+        alert("Please copy manually:\n\n" + text);
+      }
+      document.body.removeChild(el);
+    }
+
+    function triggerSuccessState(btn, symbol, label) {
+      btn.classList.add("copied");
+      btn.innerHTML = '<span class="btn-symbol">&#10003;</span> <span class="btn-text">Copied to Clipboard!</span>';
+
+      const toast = document.getElementById("toast");
+      if (toast) {
+        toast.classList.add("visible");
+        setTimeout(() => {
+          toast.classList.remove("visible");
+        }, 2800);
+      }
+
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = `<span class="btn-symbol">${symbol}</span> <span class="btn-text">${label}</span>`;
+      }, 2400);
+    }
+
+    function copySetup(btn) {
+      copyToClipboard(SETUP_CMD, btn, "&#10022;", "Copy Setup");
     }
 
     function copyUpdate(btn) {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(UPDATE_CMD);
-      }
-      flashCopied(btn, "↻", "Copy Update");
-    }
-
-    function flashCopied(btn, originalIcon, originalLabel) {
-      btn.classList.add("copied");
-      btn.innerHTML = '<span>✓</span> <span>Copied!</span>';
-      setTimeout(() => {
-        btn.classList.remove("copied");
-        btn.innerHTML = `<span class="btn-icon">${originalIcon}</span> <span class="btn-label">${originalLabel}</span>`;
-      }, 2200);
+      copyToClipboard(UPDATE_CMD, btn, "&#8635;", "Copy Update");
     }
   </script>
 
