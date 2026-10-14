@@ -154,7 +154,6 @@
     .pillar-card:hover {
       border-color: var(--border-gold-glow);
       box-shadow: var(--shadow-hover);
-      transform: translateY(-1px);
     }
 
     .pillar-icon-badge {
@@ -230,6 +229,12 @@
       margin-bottom: 16px;
       box-shadow: 0 6px 20px -2px rgba(140, 109, 31, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position: relative;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .action-master-card:hover {
+      border-color: rgba(217, 119, 6, 0.5);
+      box-shadow: 0 8px 24px -2px rgba(180, 83, 9, 0.14), 0 0 14px rgba(251, 191, 36, 0.15);
     }
 
     .action-row {
@@ -248,11 +253,10 @@
       display: inline-block;
       font-size: 9.5px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       color: var(--gold-deep);
       background: #fbf2dc;
-      padding: 1px 7px;
+      padding: 2px 8px;
       border-radius: var(--radius-full);
       margin-bottom: 3px;
     }
@@ -286,30 +290,28 @@
     }
 
     .choice-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(252, 247, 237, 0.94) 100%);
-      border: 1px solid var(--border-gold);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 248, 236, 0.96) 100%);
+      border: 1px solid rgba(217, 119, 6, 0.3);
       border-radius: var(--radius-lg);
       padding: 20px 22px 18px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 6px 20px -2px rgba(140, 109, 31, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 20px -2px rgba(180, 83, 9, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position: relative;
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .choice-card:hover {
-      border-color: var(--border-gold-glow);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px -2px rgba(140, 109, 31, 0.14);
+      border-color: rgba(217, 119, 6, 0.55);
+      box-shadow: 0 8px 24px -2px rgba(180, 83, 9, 0.16), 0 0 16px rgba(251, 191, 36, 0.18);
     }
 
     .choice-badge {
       display: inline-block;
       font-size: 9.5px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       color: var(--gold-deep);
       background: #fbf2dc;
       padding: 2px 8px;
@@ -336,24 +338,29 @@
 
     .choice-steps {
       list-style: none;
+      counter-reset: step-counter;
       padding: 0;
       margin: 0 0 16px 0;
-      font-size: 11px;
-      color: var(--text-secondary);
-      line-height: 1.5;
     }
 
     .choice-steps li {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 5px;
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 7px;
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
     }
 
-    .choice-step-num {
+    .choice-steps li::before {
+      content: counter(step-counter) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
       font-weight: 700;
       color: var(--gold-deep);
-      min-width: 14px;
+      font-size: 11.5px;
     }
 
     .choice-footer {
@@ -368,7 +375,7 @@
     kbd {
       display: inline-block;
       padding: 1px 5px;
-      font-size: 9.5px;
+      font-size: 10px;
       font-family: var(--font-mono);
       background: #f4f4f5;
       border: 1px solid #d4d4d8;
@@ -376,6 +383,8 @@
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
       color: #3f3f46;
       font-weight: 600;
+      margin: 0 1px;
+      line-height: 1.2;
     }
 
     /* Compact Pill Buttons */
@@ -401,36 +410,39 @@
     }
 
     .btn-gold-spark {
-      background: var(--btn-obsidian);
-      color: var(--gold-bright);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(251, 191, 36, 0.25);
+      background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #d97706 100%);
+      color: #3b2503;
+      border: 1px solid #f59e0b;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+      font-weight: 700;
     }
 
     .btn-gold-spark:hover {
-      background: var(--btn-obsidian-hover);
-      color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px -2px rgba(251, 191, 36, 0.35);
-      border-color: rgba(251, 191, 36, 0.45);
+      background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #b45309 100%);
+      color: #1c0f00;
+      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border-color: #d97706;
     }
 
     .btn-neutral-dark {
-      background: #27272a;
-      color: #f4f4f5;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(180deg, #fffdf8 0%, #fef3c7 100%);
+      color: #78350f;
+      border: 1px solid #fcd34d;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      font-weight: 700;
     }
 
     .btn-neutral-dark:hover {
-      background: #18181b;
-      color: #ffffff;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+      color: #451a03;
+      border-color: #f59e0b;
+      box-shadow: 0 3px 12px rgba(217, 119, 6, 0.25);
     }
 
     .action-button:active {
-      transform: translateY(0);
+      transform: none;
+      opacity: 0.92;
     }
 
     .action-button.copied {
@@ -521,7 +533,6 @@
 
     .gesture-box:hover {
       border-color: var(--border-gold-glow);
-      transform: translateY(-1px);
     }
 
     .gesture-header {
@@ -561,7 +572,6 @@
 
     .wish-box:hover {
       border-color: var(--border-gold);
-      transform: translateY(-1px);
     }
 
     .wish-category {
@@ -801,43 +811,43 @@
     <!-- 2. INSTANT AWAKENING (CHOOSE YOUR PATH)    -->
     <!-- ========================================== -->
     <section class="section-head">
-      <div class="section-title">&#9889; Instant Awakening</div>
+      <div class="section-title">&#9889; Instant awakening</div>
       <div class="section-tagline">Choose your preferred setup method</div>
     </section>
 
     <!-- 2-Column Side-by-Side Choice Grid -->
     <div class="awakening-choice-grid">
-      <!-- Left Side: Interactive Launcher -->
+      <!-- Left Side: Option A -->
       <div class="choice-card">
-        <span class="choice-badge">Option 1 • 1-Click Launcher</span>
-        <div class="choice-title">Download Launcher</div>
+        <span class="choice-badge">Option A &bull; Automatic launcher</span>
+        <div class="choice-title">Download launcher</div>
         <div class="choice-desc">Download a clickable macOS script that automatically opens Terminal and runs the complete setup.</div>
-        <ul class="choice-steps">
-          <li><span class="choice-step-num">1.</span> Click <strong>Launch Setup Now</strong> below</li>
-          <li><span class="choice-step-num">2.</span> Click the downloaded <strong>Awaken.command</strong> in your browser tray</li>
-        </ul>
+        <ol class="choice-steps">
+          <li>Click <strong>Launch setup now</strong> below</li>
+          <li>Click the downloaded <strong>Awaken.command</strong> in your browser tray</li>
+        </ol>
         <div class="choice-footer">
           <button type="button" class="action-button btn-gold-spark choice-btn-full" onclick="launchSetup(this)" title="Download &amp; Launch Awaken.command">
             <span class="btn-symbol">&#10022;</span>
-            <span class="btn-text">Launch Setup Now</span>
+            <span class="btn-text">Launch setup now</span>
           </button>
         </div>
       </div>
 
-      <!-- Right Side: Terminal Command -->
+      <!-- Right Side: Option B -->
       <div class="choice-card">
-        <span class="choice-badge">Option 2 • Terminal Command</span>
-        <div class="choice-title">Copy &amp; Paste in Terminal</div>
+        <span class="choice-badge">Option B &bull; Direct terminal command</span>
+        <div class="choice-title">Copy &amp; paste in terminal</div>
         <div class="choice-desc">Run directly via curl in macOS Terminal. Bypasses browser downloads and Gatekeeper warnings.</div>
-        <ul class="choice-steps">
-          <li><span class="choice-step-num">1.</span> Click <strong>Copy Terminal Command</strong> below</li>
-          <li><span class="choice-step-num">2.</span> Open Terminal (<kbd>Cmd</kbd>+<kbd>Space</kbd> &rarr; <code>Terminal</code>)</li>
-          <li><span class="choice-step-num">3.</span> Paste (<kbd>Cmd</kbd>+<kbd>V</kbd>) and hit <kbd>Enter</kbd></li>
-        </ul>
+        <ol class="choice-steps">
+          <li>Click <strong>Copy terminal command</strong> below</li>
+          <li>Open Terminal (<kbd>Cmd</kbd> + <kbd>Space</kbd> &rarr; type <code>Terminal</code>)</li>
+          <li>Paste (<kbd>Cmd</kbd> + <kbd>V</kbd>) and hit <kbd>Enter</kbd></li>
+        </ol>
         <div class="choice-footer">
           <button type="button" class="action-button btn-neutral-dark choice-btn-full" onclick="copySetupCommand(this)" title="Copy Command to Clipboard">
             <span class="btn-symbol">&#128203;</span>
-            <span class="btn-text">Copy Terminal Command</span>
+            <span class="btn-text">Copy terminal command</span>
           </button>
         </div>
       </div>
@@ -946,30 +956,28 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 6. IN-PLACE REFRESH & UPDATE               -->
+    <!-- 6. UPDATE                                  -->
     <!-- ========================================== -->
     <section class="section-head" style="margin-top: 36px;">
-      <div class="section-title">&#8635; Refresh &amp; Update</div>
+      <div class="section-title">&#8635; Update</div>
       <div class="section-tagline">Already running Genio? Pull updates without touching your saved wishes</div>
     </section>
 
-    <div class="action-master-card" style="margin-bottom: 28px;">
-      <div class="action-row">
-        <div class="action-meta">
-          <span class="action-badge">In-Place Update</span>
-          <div class="action-title">Refresh to Latest Release</div>
-          <div class="action-desc">Fetches and updates /Applications/Genio.app in place, preserving all widgets and settings in ~/.genio</div>
-        </div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button type="button" class="action-button btn-gold-spark" onclick="launchUpdate(this)" title="Download Update.command">
-            <span class="btn-symbol">&#8635;</span>
-            <span class="btn-text">Download Updater</span>
-          </button>
-          <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdateCommand(this)" title="Copy Update Command">
-            <span class="btn-symbol">&#128203;</span>
-            <span class="btn-text">Copy Update Command</span>
-          </button>
-        </div>
+    <div class="action-master-card" style="margin-bottom: 28px; padding: 22px 24px;">
+      <span class="action-badge">Update</span>
+      <div class="action-title" style="font-size: 14.5px; margin: 6px 0 4px 0;">Update to latest version</div>
+      <div class="action-desc" style="font-size: 12px; line-height: 1.45; margin-bottom: 16px;">
+        Fetches and updates <code>/Applications/Genio.app</code> in place. All custom widgets, preferences, and saved states in <code>~/.genio</code> remain untouched.
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <button type="button" class="action-button btn-gold-spark" onclick="launchUpdate(this)" title="Download Update.command">
+          <span class="btn-symbol">&#8635;</span>
+          <span class="btn-text">Download updater</span>
+        </button>
+        <button type="button" class="action-button btn-neutral-dark" onclick="copyUpdateCommand(this)" title="Copy Update Command">
+          <span class="btn-symbol">&#128203;</span>
+          <span class="btn-text">Copy update command</span>
+        </button>
       </div>
     </div>
 
@@ -1048,13 +1056,13 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      triggerSuccess(btn, "&#10022;", "Launch Setup Now", "Downloaded &amp; Copied!");
+      triggerSuccess(btn, "&#10022;", "Launch setup now", "Downloaded &amp; copied!");
       showToast("Downloaded Awaken.command (also copied command to clipboard)");
     }
 
     function copySetupCommand(btn) {
       copyToClipboard(SETUP_CMD);
-      triggerSuccess(btn, "&#128203;", "Copy Terminal Command", "Command Copied!");
+      triggerSuccess(btn, "&#128203;", "Copy terminal command", "Command copied!");
       showToast("Command copied! Open Terminal and press Cmd+V to paste.");
     }
 
@@ -1066,13 +1074,13 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      triggerSuccess(btn, "&#8635;", "Download Updater", "Downloaded &amp; Copied!");
+      triggerSuccess(btn, "&#8635;", "Download updater", "Downloaded &amp; copied!");
       showToast("Downloaded Update.command (also copied command to clipboard)");
     }
 
     function copyUpdateCommand(btn) {
       copyToClipboard(UPDATE_CMD);
-      triggerSuccess(btn, "&#128203;", "Copy Update Command", "Command Copied!");
+      triggerSuccess(btn, "&#128203;", "Copy update command", "Command copied!");
       showToast("Update command copied! Open Terminal and press Cmd+V to paste.");
     }
   </script>
